@@ -5,8 +5,8 @@ var routeMiddleware = require('../middleware/routehelper');
 //   res.redirect('/users');
 // });
 
-require('./songs');
-require('./playlists');
+// require('./songs');
+// require('./playlists');
 
 app.get('/', function(req,res){
   res.render('index.ejs');

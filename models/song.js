@@ -10,5 +10,5 @@ var songSchema = new mongoose.Schema({
   }
 });
 
-var Song = mongoose.model('Song', wakeupSchema);
+var Song = mongoose.model('Song', songSchema);
 module.exports = Song;

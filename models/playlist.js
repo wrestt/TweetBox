@@ -12,5 +12,5 @@ var playlistSchema = new mongoose.Schema({
   }],
 });
 
-var Playlist = mongoose.model('Playlist', wakeupSchema);
+var Playlist = mongoose.model('Playlist', playlistSchema);
 module.exports = Playlist;
