@@ -9,9 +9,9 @@ var routeMiddleware = require('../middleware/routehelper');
 // require('./playlists');
 
 app.get('/', function(req,res){
-  res.render('index.ejs');
+  res.render('index.html.ejs');
 });
 
 app.get('*', function(req, res) {
-  res.render('404');
+  res.render('404.html.ejs');
 });
