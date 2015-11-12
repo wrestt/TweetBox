@@ -1,12 +1,12 @@
 
 <h1>Sign Up</h1>
 <label>Name
-  <input type="text" placeholder="Name" ng-model="user.name" />
+  <input type="text" placeholder="Name" ng-model="vm.user.name" />
 </label><br/>
 <label>Email
-  <input type="email" placeholder="Email" ng-model="user.email">
+  <input type="email" placeholder="Email" ng-model="vm.user.email">
 </label><br/>
 <label>Password
-  <input type="password" placeholder="Password" ng-model="user.password">
+  <input type="password" placeholder="Password" ng-model="vm.user.password">
 </label><br/>
-<button ng-click="formCreateUser(user)">Sign Up</button><br/>
+<button ng-click="vm.formCreateUser(vm.user)">Sign Up</button><br/>

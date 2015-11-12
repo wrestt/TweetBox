@@ -1,8 +1,8 @@
 <h1>Sign In</h1>
 <label>Email
-  <input type="email" placeholder="Email" ng-model="user.email">
+  <input type="email" placeholder="Email" ng-model="vm.user.email">
 </label>
 <label>Password
-  <input type="password" placeholder="Password" ng-model="user.password">
+  <input type="password" placeholder="Password" ng-model="vm.user.password">
 </label>
-<button ng-click="formSigninUser(user)">Sign In</button><br />
+<button ng-click="vm.formSigninUser(vm.user)">Sign In</button><br />
