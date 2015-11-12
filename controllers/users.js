@@ -21,7 +21,7 @@ apiRouter.route('/users/login')
     if (!err && user !== null) {
       res.json(user);
     } else {
-      res.json({message: 'Login Failed!'});
+      res.json(false);
     }
   });
 });
