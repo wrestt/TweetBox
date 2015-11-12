@@ -16,10 +16,13 @@
           });
         };
         $scope.twitterfetch = function() {
-          console.log('Click');
           $http({
             method: 'GET',
-            url: 'http://127.0.0.1:3000/api/twitterfetch'
+            dataType: 'JSONP',
+            url: 'http://localhost:3000/api/twitterfetch',
+            xhrFields: {
+              withCredentials: true
+            }
           }).then(function successCallback(response) {
              console.log(response);
              $scope.tweets.push.apply($scope.tweets, response.data);
