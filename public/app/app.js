@@ -1,10 +1,9 @@
 (function() {
   angular
-    .module('tweetBoxApp', ['ngRoute', 'spotify'])
+    .module('tweetBoxApp', ['ngRoute', 'spotify', 'ngCookies', 'ngResource'])
     .config(['$resourceProvider', '$routeProvider',
       function($resourceProvider, $routeProvider) {
-        $resourceProvider.defaults.stripTrailingSlashes = false;
-        // $httpProvider.defaults.withCredentials = true;
+        // $resourceProvider.defaults.stripTrailingSlashes = false;
         $routeProvider
           .when('/', {
             templateUrl: './app/partials/home.html',
