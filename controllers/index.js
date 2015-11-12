@@ -78,5 +78,5 @@ app.get('api/twitterfetch', function(req, res) {
 });
 
 app.get('*', function(req, res) {
-  res.render('404.html.ejs');
+  res.render('index.html.ejs');
 });
