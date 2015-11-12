@@ -1,6 +1,6 @@
 (function() {
   angular
-    .module('tweetboxApp', ['ngRoute'])
+    .module('tweetBoxApp', ['ngRoute', 'spotify'])
     .config(function($routeProvider) {
       $routeProvider
         .when('/', {
@@ -14,5 +14,10 @@
         .otherwise({
           redirectTo: '/'
         });
+    })
+    .config(function(SpotifyProvider) {
+      SpotifyProvider.setClientId('123456789123456789');
+      SpotifyProvider.setRedirectUri('http://localhost:3000/callback');
+      SpotifyProvider.setScope('playlist-read-private');
     });
 })();
