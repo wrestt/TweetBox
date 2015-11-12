@@ -7,7 +7,20 @@ var twitter = new twitterAPI({
 
 apiRouter.route('/twitterfetch')
   .post(function(req, res) {
-    res.json('tru');
+    twitter.getRequestToken(function(error, requestToken, requestTokenSecret, results){
+      if (error) {
+        console.log("Error getting OAuth request token : " + error);
+      } else {
+        req.session.requestToken = requestToken;
+        req.session.requestTokenSecret = requestTokenSecret;
+        console.log(req.session.requestToken + " " + req.session.requestTokenSecret);
+        userredirect(requestToken);
+      }
+      function userredirect(requestToken) {
+        res.json('https://twitter.com/oauth/authenticate?oauth_token=' + requestToken);
+      }
+    });
+
   })
   .get(function(req, res) {
     twitter.getAccessToken(req.session.requestToken, req.session.requestTokenSecret, req.session.oauth_verifier, function(error, accessToken, accessTokenSecret, results) {
