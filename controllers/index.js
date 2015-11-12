@@ -46,7 +46,7 @@ app.get('/twitterauth', function(req, res) {
 
 });
 
-app.get('/twitterfetch', function(req, res) {
+app.get('api/twitterfetch', function(req, res) {
   if (req.query.oauth_token && req.query.oauth_verifier) {
     twitter.getAccessToken(req.session.requestToken, req.session.requestTokenSecret, req.session.oauth_verifier, function(error, accessToken, accessTokenSecret, results) {
       if (error) {
