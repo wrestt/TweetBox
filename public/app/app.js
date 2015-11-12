@@ -6,23 +6,28 @@
       $routeProvider
         .when('/', {
           templateUrl: './app/partials/home.html',
-          controller: 'MainController'
+          controller: 'MainController',
+          controllerAs: 'vm'
         })
         .when('/signin', {
           templateUrl: './app/partials/signin.html',
-          controller: 'UsersController'
+          controller: 'UsersController',
+          controllerAs: 'vm'
         })
         .when('/signup', {
           templateUrl: './app/partials/signup.html',
-          controller: 'UsersController'
+          controller: 'UsersController',
+          controllerAs: 'vm'
         })
         .when('/account', {
           templateUrl: './app/partials/account.html',
-          controller: 'UsersController'
+          controller: 'UsersController',
+          controllerAs: 'vm'
         })
         .when('/spotify/callback/', {
           templateUrl: './app/partials/callback.html',
-          controller: 'MainController'
+          controller: 'MainController',
+          controllerAs: 'vm'
         })
         .otherwise({
           redirectTo: '/'
