@@ -1,9 +1,11 @@
 <h1>Sign Up</h1>
 <label>Name
-  <input type="text" placeholder="name" ng-model="newContact.name" />
+  <input type="text" placeholder="Name" ng-model="newUser.name" />
 </label>
 <label>Email
-  <input type="text" placeholder="email" ng-model="newContact.email" />
+  <input type="email" placeholder="Email" ng-model="newUser.email">
 </label>
-<button ng-click="addContact()">Add Contact</button><br />
-  
+<label>Password
+  <input type="password" placeholder="Password" ng-model="newUser.password">
+</label>
+<button ng-click="newUser()">Sign Up</button><br />
