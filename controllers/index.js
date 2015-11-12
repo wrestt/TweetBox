@@ -47,7 +47,8 @@ app.get('/twitterauth', function(req, res) {
 });
 
 app.get('/twitterfetch', function(req, res) {
-  twitter.getAccessToken(req.session.requestToken, req.session.requestTokenSecret, req.session.oauth_verifier, function(error, accessToken, accessTokenSecret, results) {
+  if (req.query.oauth_token && req.query.oauth_verifier) {
+    twitter.getAccessToken(req.session.requestToken, req.session.requestTokenSecret, req.session.oauth_verifier, function(error, accessToken, accessTokenSecret, results) {
       if (error) {
           console.log(error);
       } else {
@@ -57,15 +58,23 @@ app.get('/twitterfetch', function(req, res) {
           gettwitterfeed();
       }
     });
+
     function gettwitterfeed() {
       twitter.getTimeline('mentions_timeline', {count: '5'}, req.session.accessToken, req.session.accessTokenSecret, function(error, data, response) {
         if (error) {
-          //something was wrong with either accessToken or accessTokenSecret
+          res.json(error)
         } else {
-          console.log(data);
+          var results = [];
+          for (var i = 0; i < data.length; i++) {
+            results.push(data[i].text);
+          }
+          res.json(results);
         }
       });
     };
+  } else {
+    res.redirect('/twitterauth');
+  }
 });
 
 app.get('*', function(req, res) {
