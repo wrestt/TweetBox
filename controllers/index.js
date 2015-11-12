@@ -1,7 +1,5 @@
-var loginMiddleware = require('../middleware/loginhelper');
-var routeMiddleware = require('../middleware/routehelper');
-
 require('./twitter');
+require('./users');
 // require('./songs');
 // require('./playlists');
 
