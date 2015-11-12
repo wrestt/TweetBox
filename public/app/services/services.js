@@ -9,6 +9,7 @@
     UserData.addUser = function(obj) {
       //Male a post request to USER API
       UserData.userData.push(obj);
+      console.log(obj);
     };
 
     return UserData;
