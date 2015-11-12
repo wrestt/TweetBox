@@ -1,7 +1,7 @@
 (function() {
   angular
     .module('tweetBoxApp')
-    .factory('Twitter', function() {
+    .factory('Twitter', ['$http', function($http) {
       var Twitter = {};
       Twitter.tweets = [];
 
@@ -16,11 +16,12 @@
         }).then(function successCallback(response) {
            console.log(response);
            Twitter.tweets.push.apply(Twitter.tweets, response.data);
+           console.log(Twitter.tweets);
         }, function errorCallback(response) {
             console.log("Can't get these tweets man");
         });
       };
 
       return Twitter;
-    });
+    }]);
 })();
