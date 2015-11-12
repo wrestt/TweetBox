@@ -8,8 +8,8 @@
           templateUrl: './app/partials/home.html',
           controller: 'MainController'
         })
-        .when('/singin', {
-          templateUrl: './app/partials/singin.html',
+        .when('/signin', {
+          templateUrl: './app/partials/signin.html',
           controller: 'UsersController'
         })
         .when('/signup', {
