@@ -9,6 +9,8 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
+app.use(express.static(__dirname + '/app'));
+app.use('/bower_components', express.static(__dirname + '/bower_components'));
 
 app.use(session({
   maxAge: 36000000,
