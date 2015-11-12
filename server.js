@@ -42,21 +42,22 @@ var shitholder = {};
 
 app.get('/twitterauth', function(req, res) {
 
-  twitter.getRequestToken(function(error, requestToken, requestTokenSecret, results){
-    if (error) {
-      console.log("Error getting OAuth request token : " + error);
-    } else {
-      req.session.requestToken = requestToken;
-      req.session.requestTokenSecret = requestTokenSecret;
-      console.log(req.session.requestToken + " " + req.session.requestTokenSecret);
-      userredirect(requestToken);
-    }
-
-    function userredirect(requestToken) {
-      res.redirect('https://twitter.com/oauth/authenticate?oauth_token=' + requestToken);
-    }
-
-  });
+  twitter.getRequestToken(
+    function(error, requestToken, requestTokenSecret, results) {
+      if (error) {
+        console.log('Error getting OAuth request token : ' + error);
+      } else {
+        req.session.requestToken = requestToken;
+        req.session.requestTokenSecret = requestTokenSecret;
+        console.log(req.session.requestToken + ' ' + req.session.requestTokenSecret);
+        userredirect(requestToken);
+      }
+      function userredirect(requestToken) {
+        res.redirect(
+          'https://twitter.com/oauth/authenticate?oauth_token=' + requestToken
+        );
+      }
+    });
 
 });
 
