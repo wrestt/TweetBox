@@ -1,11 +1,15 @@
+
+
 <script type='text/javascript'>
-  window.onload=function(){
-    var target = window.self === window.top ? window.opener : window.parent;
-    var hash = window.location.hash;
-    if (hash) {
-        var token = window.location.hash.split('&')[0].split('=')[1];
-        localStorage.setItem('spotify-token', token);
-    };
-    $location.url('http://127.0.0.1:3000/');
+window.onload=function(){
+  var target = window.self === window.top ? window.opener : window.parent;
+
+  var hash = window.location.hash;
+  if (hash) {
+      var token = window.location.hash.split('&')[0].split('=')[1];
+      localStorage.setItem('spotify-token', token);
   }
+
+}
+
 </script>

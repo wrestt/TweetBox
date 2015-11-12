@@ -49,7 +49,6 @@ app.get('/twitterauth', function(req, res) {
       } else {
         req.session.requestToken = requestToken;
         req.session.requestTokenSecret = requestTokenSecret;
-        console.log(req.session.requestToken + ' ' + req.session.requestTokenSecret);
         userredirect(requestToken);
       }
       function userredirect(requestToken) {
@@ -63,19 +62,12 @@ app.get('/twitterauth', function(req, res) {
 
 apiRouter.route('/twitterfetch')
   .get(function(req, res) {
-    console.log('***********Hello World*************');
-    console.log(app.request);
-    console.log('***********Hello World*************');
-    console.log(req);
-    console.log(req.session.requestToken + " " + req.session.requestTokenSecret + " " + req.session.oauth_verifier);
     twitter.getAccessToken(req.session.requestToken, req.session.requestTokenSecret, req.session.oauth_verifier, function(error, accessToken, accessTokenSecret, results) {
     if (error) {
         console.log(error);
-        console.log('&&&&&&&&&&&&&&&&OSHIT&&&&&&&&&&&&&&&');
     } else {
       req.session.accessToken = accessToken;
       req.session.accessTokenSecret = accessTokenSecret;
-      console.log('##################SUCESS###################');
       gettwitterfeed();
     }
 });
@@ -108,16 +100,13 @@ apiRouter.route('/twitterfetch')
 
 app.use('/api', apiRouter);
 
+
+
 app.get('/', function(req,res){
-  console.log(req.session);
   // Need to figure out a away to save state when bounce back and forth from auth
   if (req.query.oauth_token && req.query.oauth_verifier) {
     req.session.oauth_token = req.query.oauth_token;
     req.session.oauth_verifier = req.query.oauth_verifier;
-    console.log(req.session.oauth_token);
-    console.log(req.session.oauth_verifier);
-    console.log('*****************SUCESS*********************');
-    console.log(req.session.requestToken + " " + req.session.requestTokenSecret);
     res.render('index.html.ejs');
   } else {
     res.render('index.html.ejs');

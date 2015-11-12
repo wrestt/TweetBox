@@ -1,7 +1,7 @@
 (function() {
   angular
     .module('tweetBoxApp', ['ngRoute', 'spotify'])
-    .config(function ($routeProvider) {
+    .config(function($routeProvider) {
       // $httpProvider.defaults.withCredentials = true;
       $routeProvider
         .when('/', {

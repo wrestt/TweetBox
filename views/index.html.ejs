@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>TweetBOX</title>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" media="screen">
   <link href="./app/css/main.css" rel="stylesheet" media="screen">
@@ -21,20 +22,7 @@
 </head>
 
 <body>
-  <a href="/twitterauth">Twitter Auth</a>
   <div ng-view></div>
-  <h1>We made it</h1>
-  <iframe ng-src="https://embed.spotify.com/?uri=spotify:track:2nJeViQO6tzEOtUv4l50T2" width='300' height='380' frameborder='0' allowtransparency='true'></iframe>
-  <div class="container">
-    <div  ng-model="initialText">
-      <h1>Say something</h1>
-      <br>
-      <input type="text" ng-model="greeting">
-      </p>
-      <p>{{ greeting }}</p>
-    </div>
-  </div>
-
 </body>
 
 </html>
