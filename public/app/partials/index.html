@@ -1,5 +1,5 @@
 
-<div ng-controller="MainController">
+<!-- <div ng-controller="MainController"> -->
   <h1>hello</h1>
   <button ng-click="login()">Login with Spotify</button>
 
@@ -14,5 +14,18 @@
       </a>
     </li>
   </ul>
+  <br/>
+  <button ng-click="twitterfetch()">Fetch tweets</button>
+  <br/>
 
-</div>
+  <table>
+    <tr ng-repeat="tweet in tweets">
+      <td>
+        <h2>{{tweet}}</h2>
+      </td>
+    </tr>
+  </table>
+  <data ng-init="taco = 'bad'"></data>
+  <button ng-click="taco = 'good'">Change taco</button>
+  {{taco}}
+<!-- </div> -->
