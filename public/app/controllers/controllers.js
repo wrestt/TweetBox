@@ -16,6 +16,7 @@
           });
         };
         $scope.twitterfetch = function() {
+          console.log('clicked');
           $http({
             method: 'GET',
             dataType: 'JSONP',
