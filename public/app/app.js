@@ -8,7 +8,7 @@
           templateUrl: './app/partials/index.html',
           controller: 'MainController'
         })
-        .when('/callback', {
+        .when('/spotify/callback/', {
           templateUrl: './app/partials/callback.html',
           controller: 'MainController'
         })
