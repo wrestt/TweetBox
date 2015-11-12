@@ -65,6 +65,7 @@ apiRouter.route('/twitterfetch')
     console.log('***********Hello World*************');
     console.log(app.request);
     console.log('***********Hello World*************');
+    console.log(req);
     console.log(req.session.requestToken + " " + req.session.requestTokenSecret + " " + req.session.oauth_verifier);
     twitter.getAccessToken(req.session.requestToken, req.session.requestTokenSecret, req.session.oauth_verifier, function(error, accessToken, accessTokenSecret, results) {
     if (error) {
@@ -107,6 +108,7 @@ apiRouter.route('/twitterfetch')
 app.use('/api', apiRouter);
 
 app.get('/', function(req,res){
+  console.log(req.session);
   // Need to figure out a away to save state when bounce back and forth from auth
   if (req.query.oauth_token && req.query.oauth_verifier) {
     req.session.oauth_token = req.query.oauth_token;
