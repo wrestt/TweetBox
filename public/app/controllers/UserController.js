@@ -5,8 +5,8 @@
       function($scope, UserData) {
         $scope.formCreateUser = function(obj) {
           UserData.addUser(obj);
-          $location.url('/account'); 
+          $location.url('/account');
         };
       }
     ]);
-});
+})();
