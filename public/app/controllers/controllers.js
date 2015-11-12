@@ -1,6 +1,6 @@
 (function() {
   angular
-    .module('tweetBoxApp', [])
+    .module('tweetboxApp', ['$scope', 'Spotify'])
     .config(function(SpotifyProvider) {
       SpotifyProvider.setClientId('123456789123456789');
       SpotifyProvider.setRedirectUri('http://localhost:3000/callback');
