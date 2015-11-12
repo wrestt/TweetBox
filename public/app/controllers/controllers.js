@@ -19,7 +19,7 @@
           $http({
             method: 'GET',
             dataType: 'JSONP',
-            url: 'http://localhost:3000/api/twitterfetch',
+            url: 'http://127.0.0.1:3000/api/twitterfetch',
             xhrFields: {
               withCredentials: true
             }
