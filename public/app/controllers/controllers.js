@@ -3,7 +3,7 @@
     .module('tweetBoxApp', [])
     .config(function(SpotifyProvider) {
       SpotifyProvider.setClientId('123456789123456789');
-      SpotifyProvider.setRedirectUri('http://example.com/callback.html');
+      SpotifyProvider.setRedirectUri('http://localhost:3000/callback');
       SpotifyProvider.setScope('playlist-read-private');
     })
     .controller('MainController', ['$scope', 'Spotify',
