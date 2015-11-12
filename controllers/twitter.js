@@ -6,6 +6,9 @@ var twitter = new twitterAPI({
 });
 
 apiRouter.route('/twitterfetch')
+  .post(function(req, res) {
+    res.json('tru');
+  })
   .get(function(req, res) {
     twitter.getAccessToken(req.session.requestToken, req.session.requestTokenSecret, req.session.oauth_verifier, function(error, accessToken, accessTokenSecret, results) {
     if (error) {
