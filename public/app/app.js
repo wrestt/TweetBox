@@ -5,8 +5,20 @@
       // $httpProvider.defaults.withCredentials = true;
       $routeProvider
         .when('/', {
-          templateUrl: './app/partials/index.html',
+          templateUrl: './app/partials/home.html',
           controller: 'MainController'
+        })
+        .when('/singin', {
+          templateUrl: './app/partials/singin.html',
+          controller: 'UsersController'
+        })
+        .when('/signup', {
+          templateUrl: './app/partials/signup.html',
+          controller: 'UsersController'
+        })
+        .when('/account', {
+          templateUrl: './app/partials/account.html',
+          controller: 'UsersController'
         })
         .when('/spotify/callback/', {
           templateUrl: './app/partials/callback.html',
