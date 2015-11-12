@@ -1,11 +1,6 @@
 (function() {
   angular
-    .module('tweetboxApp', ['$scope', 'Spotify'])
-    .config(function(SpotifyProvider) {
-      SpotifyProvider.setClientId('123456789123456789');
-      SpotifyProvider.setRedirectUri('http://localhost:3000/callback');
-      SpotifyProvider.setScope('playlist-read-private');
-    })
+    .module('tweetBoxApp')
     .controller('MainController', ['$scope', 'Spotify', '$http',
       function($scope, Spotify, $http) {
         $scope.tweets = [];
@@ -24,7 +19,7 @@
           console.log('Click');
           $http({
             method: 'GET',
-            url: 'http://localhost:3001/api/twitterfetch'
+            url: 'http://127.0.0.1:3000/api/twitterfetch'
           }).then(function successCallback(response) {
              console.log(response);
              $scope.tweets.push.apply($scope.tweets, response.data);
