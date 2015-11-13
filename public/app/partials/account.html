@@ -6,7 +6,7 @@
 <button ng-click="vm.twitterfetch()">Fetch Tweets</button>
 
 <table>
-  <tr ng-repeat="tweet in vm.tweets">
+  <tr ng-repeat="tweet in vm.tweets track by $index">
     <td>
       {{tweet}}
     </td>
