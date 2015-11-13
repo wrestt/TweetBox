@@ -4,29 +4,30 @@
     .factory('Twitter', ['$http', function($http) {
       var Twitter = {};
       Twitter.tweets = [];
-
+      Twitter.lastId = false;
       Twitter.fetch = function() {
+        var data;
+        if (Twitter.lastId) {
+          data = {since_id: Twitter.lastId.toString()};
+        } else {
+          data = {count: '200'};
+        }
+        console.log(data);
         $http({
-          method: 'GET',
+          method: 'POST',
           dataType: 'JSONP',
+          data: data,
           url: 'http://127.0.0.1:3000/api/twitterfetch',
           xhrFields: {
             withCredentials: true
           }
         }).then(function successCallback(response) {
-          console.log('GOT DATA');
-          var last = Twitter.tweets[0];
-          var count = response.data.length -1;
-          while (count >= 0 && last !== response.data[count]) {
-            console.log(last);
-            console.log("!==");
-            console.log(response.data[count]);
-            console.log('ADD');
-            Twitter.tweets.push(response.data[count]);
-            count--;
+          if (response.data.lastId) {
+            Twitter.lastId = response.data.lastId;
           }
+          Twitter.tweets.push.apply(Twitter.tweets, response.data.tweets);
         }, function errorCallback(response) {
-            console.log("Can't get these tweets man");
+          console.log('Cant get these tweets man');
         });
       };
 

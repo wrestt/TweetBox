@@ -5,34 +5,35 @@ var twitter = new twitterAPI({
   callback: 'http://127.0.0.1:3000'
 });
 
-
 apiRouter.route('/twittertoken')
   .get(function(req, res) {
     twitter.getAccessToken(req.session.requestToken, req.session.requestTokenSecret, req.session.oauth_verifier, function(error, accessToken, accessTokenSecret, results) {
       if (error) {
-          console.log(error);
-          console.log('&&&&&&&&&&&&&&&&OSHIT&&&&&&&&&&&&&&&');
-          res.redirect('/#/account');
+        console.log(error);
+        console.log('&&&&&&&&&&&&&&&&OSHIT&&&&&&&&&&&&&&&');
+        res.redirect('/#/account');
       } else {
-          req.session.accessToken = accessToken;
-          req.session.accessTokenSecret = accessTokenSecret;
-          console.log('##################SUCESS###################');
-          res.redirect('/#/account');
+        req.session.accessToken = accessToken;
+        req.session.accessTokenSecret = accessTokenSecret;
+        console.log('##################SUCESS###################');
+        res.redirect('/#/account');
       }
     });
   });
 
 apiRouter.route('/twitterfetch')
-.get(function(req, res) {
-  twitter.getTimeline('mentions_timeline', {count: '5'},
+.post(function(req, res) {
+  console.log('controller test');
+  console.log(req.body);
+  twitter.getTimeline('mentions_timeline', req.body,
   req.session.accessToken, req.session.accessTokenSecret,
   function(error, data, response) {
     if (error) {
       res.json(error);
     } else {
-      var results = [];
+      var results = {lastId: data[0].id, tweets: []};
       for (var i = 0; i < data.length; i++) {
-        results.push(data[i].text);
+        results.tweets.push(data[i].text);
       }
       res.json(results);
     }
