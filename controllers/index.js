@@ -3,7 +3,7 @@ require('./users');
 // require('./songs');
 // require('./playlists');
 
-app.get('/', function(req,res){
+app.get('/', function(req,res ){
   console.log(req.session);
   // Need to figure out a away to save state when bounce back and forth from auth
   if (req.query.oauth_token && req.query.oauth_verifier) {
@@ -12,7 +12,6 @@ app.get('/', function(req,res){
     console.log(req.session.oauth_token);
     console.log(req.session.oauth_verifier);
     console.log('*****************SUCESS*********************');
-    console.log(req.session.requestToken + " " + req.session.requestTokenSecret);
     res.redirect('/api/twittertoken');
   } else {
     res.render('index.html.ejs');
