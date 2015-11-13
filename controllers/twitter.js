@@ -33,7 +33,7 @@ apiRouter.route('/twitterfetch')
     } else {
       var results = {lastId: data[0].id, tweets: []};
       for (var i = 0; i < data.length; i++) {
-        results.tweets.push(data[i].text);
+        results.tweets.push(data[i].text.split(' ').slice(1).join(' '));
       }
       res.json(results);
     }

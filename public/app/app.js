@@ -3,10 +3,6 @@
     .module('tweetBoxApp', ['ngRoute', 'spotify', 'ngCookies', 'ngResource'])
     .config(['$resourceProvider', '$routeProvider', '$locationProvider',
       function($resourceProvider, $routeProvider, $locationProvider) {
-        $locationProvider.html5Mode({
-          enabled: true,
-          requireBase: false
-        });
         // $resourceProvider.defaults.stripTrailingSlashes = false;
         $routeProvider
           .when('/', {
