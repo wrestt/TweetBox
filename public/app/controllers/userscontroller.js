@@ -1,7 +1,7 @@
 (function() {
   angular
     .module('tweetBoxApp')
-    .controller('UsersController', ['$scope', 'UserData', 'Spotify', 'Twitter'
+    .controller('UsersController', ['$scope', 'UserData', 'Spotify', 'Twitter',
       function($scope, UserData, Spotify, Twitter) {
         var vm = this;
         vm.tweets = Twitter.tweets;
@@ -18,6 +18,9 @@
             console.log('**********SPOTIFY USER DATA***************');
             console.log(data);
           });
+        };
+        vm.twitterfetch = function() {
+          Twitter.fetch();
         };
       }
     ]);

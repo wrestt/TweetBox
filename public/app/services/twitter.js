@@ -30,7 +30,6 @@
           console.log('Cant get these tweets man');
         });
       };
-
       return Twitter;
     }]);
 })();
