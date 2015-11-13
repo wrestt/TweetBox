@@ -13,7 +13,7 @@ app.get('/', function(req,res){
     console.log(req.session.oauth_verifier);
     console.log('*****************SUCESS*********************');
     console.log(req.session.requestToken + " " + req.session.requestTokenSecret);
-    res.render('index.html.ejs');
+    res.redirect('/api/twittertoken');
   } else {
     res.render('index.html.ejs');
   }
