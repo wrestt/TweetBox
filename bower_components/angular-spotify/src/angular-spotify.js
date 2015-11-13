@@ -1,9 +1,9 @@
-(function (window, angular, undefined) {
+(function(window, angular, undefined) {
   'use strict';
 
   angular
     .module('spotify', [])
-    .provider('Spotify', function () {
+    .provider('Spotify', function() {
 
       // Module global settings.
       var settings = {};
@@ -12,38 +12,38 @@
       settings.scope = null;
       settings.authToken = null;
 
-      this.setClientId = function (clientId) {
+      this.setClientId = function(clientId) {
         settings.clientId = clientId;
         return settings.clientId;
       };
 
-      this.getClientId = function () {
+      this.getClientId = function() {
         return settings.clientId;
       };
 
-      this.setAuthToken = function (authToken) {
+      this.setAuthToken = function(authToken) {
         settings.authToken = authToken;
         return settings.authToken;
       };
 
-      this.setRedirectUri = function (redirectUri) {
+      this.setRedirectUri = function(redirectUri) {
         settings.redirectUri = redirectUri;
         return settings.redirectUri;
       };
 
-      this.getRedirectUri = function () {
+      this.getRedirectUri = function() {
         return settings.redirectUri;
       };
 
-      this.setScope = function (scope) {
+      this.setScope = function(scope) {
         settings.scope = scope;
         return settings.scope;
       };
 
       var utils = {};
-      utils.toQueryString = function (obj) {
+      utils.toQueryString = function(obj) {
         var parts = [];
-        angular.forEach(obj, function (value, key) {
+        angular.forEach(obj, function(value, key) {
           this.push(encodeURIComponent(key) + '=' + encodeURIComponent(value));
         }, parts);
         return parts.join('&');
@@ -54,9 +54,9 @@
        */
       settings.apiBase = 'https://api.spotify.com/v1';
 
-      this.$get = ['$q', '$http', '$window', function ($q, $http, $window) {
+      this.$get = ['$q', '$http', '$window', function($q, $http, $window) {
 
-        function NgSpotify () {
+        function NgSpotify() {
           this.clientId = settings.clientId;
           this.redirectUri = settings.redirectUri;
           this.apiBase = settings.apiBase;
@@ -66,7 +66,7 @@
         }
 
         NgSpotify.prototype = {
-          api: function (endpoint, method, params, data, headers) {
+          api: function(endpoint, method, params, data, headers) {
             var deferred = $q.defer();
 
             $http({
@@ -76,16 +76,16 @@
               data: data,
               headers: headers
             })
-            .success(function (data) {
+            .success(function(data) {
               deferred.resolve(data);
             })
-            .error(function (data) {
+            .error(function(data) {
               deferred.reject(data);
             });
             return deferred.promise;
           },
 
-          _auth: function (isJson) {
+          _auth: function(isJson) {
             var auth = {
               'Authorization': 'Bearer ' + this.authToken
             };
@@ -100,12 +100,19 @@
            * q = search query
            * type = artist, album or track
            */
-          search: function (q, type, options) {
+          search: function(q, type, options) {
             options = options || {};
             options.q = q;
             options.type = type;
 
             return this.api('/search', 'GET', options);
+          },
+
+          searchAll: function(q, options) {
+            options = options || {};
+            options.q = q;
+            options.type = 'album,artist,track';
+            return this.api('/search', 'GET', options)
           },
 
           /**
@@ -288,11 +295,11 @@
             ====================== User =====================
            */
 
-          getUser: function (userId) {
+          getUser: function(userId) {
             return this.api('/users/' + userId);
           },
 
-          getCurrentUser: function () {
+          getCurrentUser: function() {
             return this.api('/me', 'GET', null, null, this._auth());
           },
 

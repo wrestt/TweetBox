@@ -1,32 +1,36 @@
 (function() {
   angular
     .module('tweetBoxApp', ['ngRoute', 'spotify', 'ngCookies', 'ngResource'])
-    .config(['$resourceProvider', '$routeProvider',
-      function($resourceProvider, $routeProvider) {
+    .config(['$resourceProvider', '$routeProvider', '$locationProvider',
+      function($resourceProvider, $routeProvider, $locationProvider) {
+        $locationProvider.html5Mode({
+          enabled: true,
+          requireBase: false
+        });
         // $resourceProvider.defaults.stripTrailingSlashes = false;
         $routeProvider
           .when('/', {
-            templateUrl: './app/partials/home.html',
+            templateUrl: '/app/partials/home.html',
             controller: 'MainController',
             controllerAs: 'vm'
           })
           .when('/signin', {
-            templateUrl: './app/partials/signin.html',
+            templateUrl: '/app/partials/signin.html',
             controller: 'UsersController',
             controllerAs: 'vm'
           })
           .when('/signup', {
-            templateUrl: './app/partials/signup.html',
+            templateUrl: '/app/partials/signup.html',
             controller: 'UsersController',
             controllerAs: 'vm'
           })
           .when('/account', {
-            templateUrl: './app/partials/account.html',
+            templateUrl: '/app/partials/account.html',
             controller: 'UsersController',
             controllerAs: 'vm'
           })
           .when('/spotify/callback/', {
-            templateUrl: './app/partials/callback.html',
+            templateUrl: '/app/partials/callback.html',
             controller: 'SpotifyCallBackController',
             controllerAs: 'vm'
           })
