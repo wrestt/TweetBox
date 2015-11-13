@@ -27,7 +27,7 @@
           })
           .when('/spotify/callback/', {
             templateUrl: './app/partials/callback.html',
-            controller: 'MainController',
+            controller: 'SpotifyCallBackController',
             controllerAs: 'vm'
           })
           .otherwise({

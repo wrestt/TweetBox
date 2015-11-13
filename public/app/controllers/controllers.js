@@ -1,20 +1,9 @@
 (function() {
   angular
     .module('tweetBoxApp')
-    .controller('MainController', ['$scope', 'Spotify', '$http',
+    .controller('MainController', ['$scope','$http',
       function($scope, Spotify, $http) {
         $scope.tweets = [];
-        $scope.searchArtist = function() {
-          Spotify.search($scope.searchartist, 'artist').then(function(data) {
-            $scope.artists = data.artists.items;
-          });
-        };
-        $scope.login = function() {
-          Spotify.login().then(function(data) {
-            console.log(data);
-            alert('You are now logged in');
-          });
-        };
         $scope.twitterfetch = function() {
           console.log('clicked');
           $http({
@@ -31,9 +20,5 @@
               console.log("Can't get these tweets man");
           });
         };
-        Spotify.getTrack('0eGsygTp906u18L0Oimnem').then(function(data) {
-          console.log('=================== Track ===================');
-          console.log(data);
-        });
       }]);
 })();
