@@ -7,7 +7,10 @@ var twitter = new twitterAPI({
 
 apiRouter.route('/twittertoken')
   .get(function(req, res) {
-    twitter.getAccessToken(req.session.requestToken, req.session.requestTokenSecret, req.session.oauth_verifier, function(error, accessToken, accessTokenSecret, results) {
+    twitter.getAccessToken(req.session.requestToken,
+    req.session.requestTokenSecret,
+    req.session.oauth_verifier,
+    function(error, accessToken, accessTokenSecret, results) {
       if (error) {
         console.log(error);
         console.log('&&&&&&&&&&&&&&&&OSHIT&&&&&&&&&&&&&&&');
@@ -42,17 +45,19 @@ apiRouter.route('/twitterfetch')
 
 app.get('/twitterauth', function(req, res) {
   twitter.getRequestToken(
-  function(error, requestToken, requestTokenSecret, results){
+  function(error, requestToken, requestTokenSecret, results) {
     if (error) {
-      console.log("Error getting OAuth request token : " + error);
+      console.log('Error getting OAuth request token : ' + error);
     } else {
       req.session.requestToken = requestToken;
       req.session.requestTokenSecret = requestTokenSecret;
-      console.log(req.session.requestToken + " " + req.session.requestTokenSecret);
+      console.log(req.session.requestToken + ' ' +
+        req.session.requestTokenSecret);
       userredirect(requestToken);
     }
     function userredirect(requestToken) {
-      res.redirect('https://twitter.com/oauth/authenticate?oauth_token=' + requestToken);
+      res.redirect('https://twitter.com/oauth/authenticate?oauth_token=' +
+        requestToken);
     }
   });
 });

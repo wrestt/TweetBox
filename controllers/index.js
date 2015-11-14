@@ -1,5 +1,7 @@
 require('./twitter');
+require('./spotify');
 require('./users');
+
 // require('./songs');
 // require('./playlists');
 

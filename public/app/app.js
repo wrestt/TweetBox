@@ -3,10 +3,6 @@
     .module('tweetBoxApp', ['ngRoute', 'spotify', 'ngCookies', 'ngResource'])
     .config(['$resourceProvider', '$routeProvider', '$locationProvider',
       function($resourceProvider, $routeProvider, $locationProvider) {
-        $locationProvider.html5Mode({
-          enabled: true,
-          requireBase: false
-        });
         // $resourceProvider.defaults.stripTrailingSlashes = false;
         $routeProvider
           .when('/', {
@@ -27,11 +23,6 @@
           .when('/account', {
             templateUrl: '/app/partials/account.html',
             controller: 'UsersController',
-            controllerAs: 'vm'
-          })
-          .when('/spotify/callback/', {
-            templateUrl: '/app/partials/callback.html',
-            controller: 'SpotifyCallBackController',
             controllerAs: 'vm'
           })
           .otherwise({

@@ -9,7 +9,9 @@
           var target = (window.self === window.top ? window.opener : window.parent);
           var hash = window.location.hash;
           if (hash) {
-            var token = window.location.hash.split('&')[0].split('=')[1];
+            console.log(hash);
+            var token = window.location.hash.split('=')[1].split('#')[0];
+            console.log(token);
             localStorage.setItem('spotify-token', token);
           };
         };
