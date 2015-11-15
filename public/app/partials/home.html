@@ -11,3 +11,13 @@
     </td>
   </tr>
 </table>
+
+{{ songs }}
+
+<table>
+  <tr ng-repeat="song in songs track by $index">
+    <td>
+      {{song}}
+    </td>
+  </tr>
+</table>
