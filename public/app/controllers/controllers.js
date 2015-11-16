@@ -15,5 +15,14 @@
           Twitter.fetch();
         };
 
+        $scope.newPlaylist = function() {
+          Twitter.new();
+          Playlist.new();
+          console.log("new");
+          console.log($scope.songs);
+          console.log('------------------------------');
+          console.log(Playlist.tracks);
+        };
+
       }]);
 })();

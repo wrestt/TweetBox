@@ -2,17 +2,8 @@
 <button ng-click='searchAll(spotifySearch)' name="button">SEARCH ALL</button>
 
 <br>
+<button ng-click="newPlaylist()">New PLaylist</button>
 <button ng-click="twitterfetch()">Fetch Tweets</button>
-<table>
-  <tr ng-repeat="tweet in tweets track by $index">
-    <td>
-      {{tweet}}
-      <button ng-click='searchAll(tweet)' name="button">SEARCH TWEET</button>
-    </td>
-  </tr>
-</table>
-
-{{ songs }}
 
 <table>
   <tr ng-repeat="song in songs track by $index">
