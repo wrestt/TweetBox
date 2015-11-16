@@ -25,6 +25,7 @@
       }
 
       Twitter.fetch = function() {
+        console.log('twitterfetching');
         var data;
         if (Twitter.lastId) {
           data = {since_id: Twitter.lastId.toString()};
@@ -40,6 +41,7 @@
             withCredentials: true
           }
         }).then(function successCallback(response) {
+          console.log(response);
           if (response.data.lastId) {
             Twitter.lastId = response.data.lastId;
             Twitter.tweets.push.apply(Twitter.tweets, response.data.tweets);
