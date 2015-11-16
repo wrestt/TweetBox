@@ -5,7 +5,7 @@
       function($http, Spotify, $sce) {
       var Playlist = {};
       Playlist.tracksId = [];
-      Playlist.trackData = {};
+      // Playlist.trackData = {};
       Playlist.parsedTrack = [$sce.trustAsResourceUrl('https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:5Z7ygHQo02SUrFmcgpwsKW,1x6ACsKV4UdWS2FMuPFUiT')];
 
       Playlist.new = function() {
@@ -25,7 +25,7 @@
           console.log(data);
           console.log('made it here');
           if (data.tracks.items[0]) {
-            Playlist.trackData[data.tracks.items[0].id] = data.tracks.items[0];
+            // Playlist.trackData[data.tracks.items[0].id] = data.tracks.items[0];
             Playlist.tracksId.push(data.tracks.items[0].id);
             Playlist.parsedTrack[0] = $sce.trustAsResourceUrl("https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:" + Playlist.tracksId.join(','));
           }
