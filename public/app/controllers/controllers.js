@@ -1,14 +1,14 @@
 (function() {
   angular
     .module('tweetBoxApp')
-    .controller('MainController', ['$scope','$http', 'Spotify', 'Twitter', 'Playlist', '$sce',
-      function($scope, $http, Spotify, Twitter, Playlist, $sce) {
+    .controller('MainController', ['$scope', 'Spotify', 'Twitter', 'Playlist',
+      function($scope, Spotify, Twitter, Playlist) {
         $scope.tweets = Twitter.tweets;
-        $scope.songs = Playlist.tracks;
+        $scope.songs = Playlist.tracksId;
         $scope.trackID = Playlist.parsedTrack;
 
-        $scope.searchAll = function (searchText) {
-          Spotify.searchAll(searchText).then(function (data) {
+        $scope.searchAll = function(searchText) {
+          Spotify.searchAll(searchText).then(function(data) {
             console.log(data);
           });
         };
@@ -20,10 +20,6 @@
         $scope.newPlaylist = function() {
           Twitter.new();
           Playlist.new();
-          console.log("new");
-          console.log($scope.songs);
-          console.log('------------------------------');
-          console.log(Playlist.tracks);
         };
 
       }]);

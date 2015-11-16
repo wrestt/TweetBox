@@ -31,7 +31,6 @@
         } else {
           data = {count: '200'};
         }
-        console.log(data);
         $http({
           method: 'POST',
           dataType: 'JSONP',
@@ -41,11 +40,9 @@
             withCredentials: true
           }
         }).then(function successCallback(response) {
-          console.log(response.data);
           if (response.data.lastId) {
             Twitter.lastId = response.data.lastId;
             Twitter.tweets.push.apply(Twitter.tweets, response.data.tweets);
-            console.log(response.data.tweets);
             Playlist.intake(response.data.tweets);
           }
         }, function errorCallback(response) {

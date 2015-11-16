@@ -4,25 +4,8 @@
 <br>
 <button ng-click="newPlaylist()">New PLaylist</button>
 <button ng-click="twitterfetch()">Fetch Tweets</button>
-
-<table>
-  <tr ng-repeat="song in songs track by $index">
-    <td>
-      {{song}}
-    </td>
-  </tr>
-</table>
-
-
+</br>
 <p>Hello !</p>
 <div ng-if="trackID[0] !== 'hello'">
   <iframe src="{{trackID[0]}}" width='300' height='380' frameborder='0' allowtransparency='true'></iframe>
 </div>
-
-<p>
-  -------------------
-</p>
-{{trackID[0]}}
-<p>
-  -------------------
-</p>
