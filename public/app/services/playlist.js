@@ -23,9 +23,9 @@
       Playlist.add = function(song) {
         Spotify.searchAll(song).then(function(data) {
           console.log(data);
-          //Add seraching logic
+          console.log('made it here');
           if (data.tracks.items[0]) {
-            Playlist.trackData[data.tracks.items[0].id] = data.tracks.items[0]);
+            Playlist.trackData[data.tracks.items[0].id] = data.tracks.items[0];
             Playlist.tracksId.push(data.tracks.items[0].id);
             Playlist.parsedTrack[0] = $sce.trustAsResourceUrl("https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:" + Playlist.tracksId.join(','));
           }
