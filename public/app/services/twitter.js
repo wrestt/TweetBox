@@ -1,7 +1,7 @@
 (function() {
   angular
     .module('tweetBoxApp')
-    .factory('Twitter', ['$http', function($http) {
+    .factory('Twitter', ['$http', 'Playlist', function($http, Playlist) {
       var Twitter = {};
       Twitter.tweets = [];
       Twitter.lastId = false;
@@ -26,6 +26,8 @@
             Twitter.lastId = response.data.lastId;
           }
           Twitter.tweets.push.apply(Twitter.tweets, response.data.tweets);
+          console.log(response.data.tweets);
+          Playlist.intake(response.data.tweets);
         }, function errorCallback(response) {
           console.log('Cant get these tweets man');
         });
