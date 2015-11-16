@@ -112,6 +112,7 @@
             options = options || {};
             options.q = q;
             options.type = 'album,artist,track';
+            console.log(api('/search', 'GET', options));
             return this.api('/search', 'GET', options)
           },
 
