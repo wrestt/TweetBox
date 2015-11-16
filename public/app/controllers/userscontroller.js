@@ -1,23 +1,21 @@
 (function() {
   angular
     .module('tweetBoxApp')
-    .controller('UsersController', ['$scope', 'UserData', 'Spotify', 'Twitter',
-      function($scope, UserData, Spotify, Twitter) {
+    .controller('UsersController', ['$scope', 'UserData', 'Twitter',
+      function($scope, UserData, Twitter) {
         var vm = this;
         vm.tweets = Twitter.tweets;
         vm.formCreateUser = function(obj) {
-          console.log('UC USER SIGN UP', obj);
           UserData.addUser(obj);
         };
         vm.formSigninUser = function(obj) {
-          console.log('UC USER SIGN IN', obj);
           UserData.signInUser(obj);
         };
-        vm.spotifyLogin = function() {
-          Spotify.login().then(function(data) {
-            console.log('**********SPOTIFY USER DATA***************');
-            console.log(data);
-          });
+        vm.spotifyAuth = function() {
+          UserData.spotifyLogin();
+        };
+        vm.twitterAuth = function() {
+          UserData.twitterLogin();
         };
         vm.twitterfetch = function() {
           Twitter.fetch();

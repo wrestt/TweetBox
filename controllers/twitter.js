@@ -19,7 +19,7 @@ apiRouter.route('/twittertoken')
         req.session.accessToken = accessToken;
         req.session.accessTokenSecret = accessTokenSecret;
         console.log('##################SUCESS###################');
-        res.redirect('/#/account');
+        res.redirect('/#/close');
       }
     });
   });

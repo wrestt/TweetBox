@@ -1,11 +1,15 @@
 (function() {
   angular
   .module('tweetBoxApp')
-  .factory('UserData', ['$http', '$location', '$cookies',
-    function($http, $location, $cookies) {
+  .factory('UserData', ['$http', '$location', '$cookies', '$window',
+    function($http, $location, $cookies, $window) {
+      var w = 400;
+      var h = 500;
+      var left = (screen.width / 2) - (w / 2);
+      var top = (screen.height / 2) - (h / 2);
       var UserData = {};
       UserData.user = [];
-      console.log('running factory');
+
       var temp = $cookies.get('user');
       if (temp) {
         UserData.user.push(temp);
@@ -48,12 +52,33 @@
             $location.path('/login');
           }
         });
-      }
+      };
 
       UserData.logout = function() {
         UserData.user = [];
         $cookies.delte('user');
-      }
+      };
+
+      UserData.twitterLogin = function() {
+        var authWindow = window.open(
+          'http://127.0.0.1:3000/twitterauth',
+          'Spotify',
+          'menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,width='
+            + w + ',height=' + h + ',top=' + top + ',left=' + left
+        );
+        $window.addEventListener('storage', UserData.storageChanged, false);
+        console.log('called Function');
+      };
+
+      UserData.spotifyLogin = function() {
+        var authWindow = window.open(
+          'http://127.0.0.1:3000/spotifyauth',
+          'Spotify',
+          'menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,width='
+            + w + ',height=' + h + ',top=' + top + ',left=' + left
+        );
+        $window.addEventListener('storage', UserData.storageChanged, false);
+      };
 
       return UserData;
     }]);

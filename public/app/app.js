@@ -25,6 +25,11 @@
             controller: 'UsersController',
             controllerAs: 'vm'
           })
+          .when('/close', {
+            templateUrl: '/app/partials/callback.html',
+            controller: 'CallBackController',
+            controllerAs: 'vm'
+          })
           .otherwise({
             redirectTo: '/'
           });
