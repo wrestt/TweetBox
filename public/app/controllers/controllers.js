@@ -5,8 +5,7 @@
       function($scope, $http, Spotify, Twitter, Playlist, $sce) {
         $scope.tweets = Twitter.tweets;
         $scope.songs = Playlist.tracks;
-        $scope.name = '5Z7ygHQo02SUrFmcgpwsKW,1x6ACsKV4UdWS2FMuPFUiT';
-        $scope.trackID = [$sce.trustAsResourceUrl("https://embed.spotify.com/?uri=spotify:trackset:" + $scope.name)];
+        $scope.trackID = Playlist.parsedTrack;
 
         $scope.searchAll = function (searchText) {
           Spotify.searchAll(searchText).then(function (data) {
