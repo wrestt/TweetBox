@@ -1,13 +1,10 @@
 (function() {
   angular
     .module('tweetBoxApp')
-    .controller('CallBackController', ['$scope', '$window', '$cookies',
-      function($scope, $window, $cookies) {
+    .controller('CallBackController', ['$scope', '$window',
+      function($scope, $window) {
         $scope.close = function() {
-          // $window.close()
-          console.log('****************************ksjdgfjksdkjhgfkjgsdfjkgsdfkjgh');
-          var value = $cookies.get();
-          console.log(value);
+          $window.close();
         };
       }
     ]);

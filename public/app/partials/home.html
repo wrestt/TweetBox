@@ -2,30 +2,12 @@
 <button ng-click='searchAll(spotifySearch)' name="button">SEARCH ALL</button>
 
 <br>
+<button ng-click="newPlaylist()">New PLaylist</button>
 <button ng-click="twitterfetch()">Fetch Tweets</button>
-<table>
-  <tr ng-repeat="tweet in tweets track by $index">
-    <td>
-      {{tweet}}
-      <button ng-click='searchAll(tweet)' name="button">SEARCH TWEET</button>
-    </td>
-  </tr>
-</table>
 
-{{ songs }}
+</br>
 
-<table>
-  <tr ng-repeat="song in songs track by $index">
-    <td>
-      {{song}}
-    </td>
-  </tr>
-</table>  
-
-<input type="text" ng-model="name"></input>
 <p>Hello !</p>
-<div ng-if="trackID">
-  <iframe ng-src="{{trackID[0]}}" width='300' height='380' frameborder='0' allowtransparency='true'></iframe>
+<div ng-if="trackID[0] !== 'hello'">
+  <iframe src="{{trackID[0]}}" width='300' height='380' frameborder='0' allowtransparency='true'></iframe>
 </div>
-{{name}}
-{{trackID[0]}}
