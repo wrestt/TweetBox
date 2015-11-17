@@ -9,25 +9,30 @@
 
 <p>Hello !</p>
 <div ng-if="trackID[0] !== 'hello'">
-<iframe allowtransparency='true' frameborder='0' height='380' src="{{vm.trackID[0]}}" width='300'></iframe>
+  <iframe allowtransparency='true' frameborder='0' height='380' src="{{vm.trackID[0]}}" width='300'></iframe>
 </div>
 
-<table>
-<thead>
-  <tr>
-    <th>Song Name</th>
-    <th>Artist</th>
-    <th>Album</th>
-    <th>Score</th>
-  </tr>
-</thead>
+<div class="card">
+  <div class="container">
 
-<tbody>
-    <tr ng-repeat="track in vm.tracks">
-      <td>{{track[0].name}}</td>
-      <td>{{track[0].artists[0].name}}</td>
-      <td>{{track[0].album.name}}</td>
-      <td>0</td>
-    </tr>
-</tbody>
-</table>
+    <table class="responsive-table">
+      <thead>
+        <tr>
+          <th>Song Name</th>
+          <th>Artist</th>
+          <th>Album</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="track in vm.tracks">
+          <td>{{track[0].name}}</td>
+          <td>{{track[0].artists[0].name}}</td>
+          <td>{{track[0].album.name}}</td>
+          <td>0</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
