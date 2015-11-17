@@ -22,7 +22,7 @@
           };
           vm.twitterfetch = function() {
             Twitter.fetch();
-            $interval(Twitter.fetch, 63000);
+            // $interval(Twitter.fetch, 63000);
           };
           vm.changeSong = function(track, subtrack) {
             console.log('running track sub');
@@ -33,9 +33,5 @@
             console.log(track.id);
             console.log(subtrack.id);
           };
-
-          vm.play = function() {
-            $('#widgetContainer > div.player.music-paused > div.album-art-container.clickable > div > div').click();
-          }
         }]);
 })();
