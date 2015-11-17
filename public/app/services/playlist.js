@@ -41,33 +41,41 @@
           if (data.tracks.items[0]) {
             var temp = _.find(Playlist.trackData, _.matchesProperty('id', data.tracks.items[0].id));
             if (temp) {
-              console.log('WINNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNER');
-              console.log('WINNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNER');
-              console.log('WINNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNER');
               temp.score ++;
             } else {
               Playlist.trackData.push(new Track(data.tracks.items.slice(0, 5), true));
             }
             Playlist.sort();
-
             var trackId = [];
             Playlist.trackData.forEach(function(track) {
               console.log(track);
               trackId.push(track.id);
             });
-
             Playlist.parsedTrack[0] = $sce.trustAsResourceUrl("https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:" + trackId.join(','));
           }
         });
       };
 
-      Playlist.check = function(track) {
+      Playlist.sub = function(trackOne, trackTwo) {
+        var temp = {};
+        temp.id = trackOne.id
+        temp.name = trackOne.name;
+        temp.artists = trackOne.artists[0].name;
+        temp.album = trackOne.album.name;
 
+        trackOne.id = trackTwo.id
+        trackOne.name = trackTwo.name;
+        trackOne.artists = trackTwo.artists[0].name;
+        trackOne.album = trackTwo.album.name;
+
+        trackTwo.id = temp.id
+        trackTwo.name = temp.name;
+        trackTwo.artists = temp.artists[0].name;
+        trackTwo.album = temp.album.name;
       };
 
       Playlist.sort = function() {
         Playlist.trackData.sort(compare);
-        console.log(Playlist.trackData);
         function compare(a, b) {
           if (a.score > b.score) {
             return -1;
