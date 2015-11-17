@@ -7,7 +7,7 @@
       Playlist.trackData = [];
 
       function Track(data, main) {
-        this.id = data[0].id
+        this.id = data[0].id;
         this.name = data[0].name;
         this.artists = data[0].artists[0].name;
         this.album = data[0].album.name;
@@ -22,11 +22,15 @@
         }
       };
 
-      Playlist.parsedTrack = [$sce.trustAsResourceUrl('https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:5Z7ygHQo02SUrFmcgpwsKW,1x6ACsKV4UdWS2FMuPFUiT')];
+      Playlist.parsedTrack = [$sce.trustAsResourceUrl(
+        'https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:5Z7ygHQo02SUrFmcgpwsKW,1x6ACsKV4UdWS2FMuPFUiT'
+      )];
 
       Playlist.new = function() {
         Playlist.tracks.length = 0;
-        Playlist.parsedTrack = [$sce.trustAsResourceUrl('https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:5Z7ygHQo02SUrFmcgpwsKW,1x6ACsKV4UdWS2FMuPFUiT')];
+        Playlist.parsedTrack = [$sce.trustAsResourceUrl(
+          'https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:5Z7ygHQo02SUrFmcgpwsKW,1x6ACsKV4UdWS2FMuPFUiT'
+        )];
       };
 
       Playlist.intake = function(songs) {
@@ -39,39 +43,52 @@
       Playlist.add = function(song) {
         Spotify.searchAll(song).then(function(data) {
           if (data.tracks.items[0]) {
-            var temp = _.find(Playlist.trackData, _.matchesProperty('id', data.tracks.items[0].id));
+            var temp = _.find(
+              Playlist.trackData, _.matchesProperty(
+                'id', data.tracks.items[0].id
+              )
+            );
             if (temp) {
               temp.score ++;
             } else {
-              Playlist.trackData.push(new Track(data.tracks.items.slice(0, 5), true));
+              Playlist.trackData.push(
+                new Track(data.tracks.items.slice(0, 5), true)
+              );
             }
             Playlist.sort();
-            var trackId = [];
-            Playlist.trackData.forEach(function(track) {
-              console.log(track);
-              trackId.push(track.id);
-            });
-            Playlist.parsedTrack[0] = $sce.trustAsResourceUrl("https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:" + trackId.join(','));
+            Playlist.buildUrl();
           }
         });
       };
 
+      Playlist.buildUrl = function() {
+        var trackId = [];
+        Playlist.trackData.forEach(function(track) {
+          console.log(track);
+          trackId.push(track.id);
+        });
+        Playlist.parsedTrack[0] = $sce.trustAsResourceUrl(
+          'https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:' +
+          trackId.join(','));
+      };
       Playlist.sub = function(trackOne, trackTwo) {
         var temp = {};
-        temp.id = trackOne.id
+        temp.id = trackOne.id;
         temp.name = trackOne.name;
-        temp.artists = trackOne.artists[0].name;
-        temp.album = trackOne.album.name;
+        temp.artists = trackOne.artists;
+        temp.album = trackOne.album;
 
-        trackOne.id = trackTwo.id
+        trackOne.id = trackTwo.id;
         trackOne.name = trackTwo.name;
-        trackOne.artists = trackTwo.artists[0].name;
-        trackOne.album = trackTwo.album.name;
+        trackOne.artists = trackTwo.artists;
+        trackOne.album = trackTwo.album;
 
-        trackTwo.id = temp.id
+        trackTwo.id = temp.id;
         trackTwo.name = temp.name;
-        trackTwo.artists = temp.artists[0].name;
-        trackTwo.album = temp.album.name;
+        trackTwo.artists = temp.artists;
+        trackTwo.album = temp.album;
+
+        Playlist.buildUrl();
       };
 
       Playlist.sort = function() {

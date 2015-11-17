@@ -24,8 +24,13 @@
             Twitter.fetch();
             $interval(Twitter.fetch, 63000);
           };
-          vm.changSong = function(track, subtrack) {
+          vm.changeSong = function(track, subtrack) {
+            console.log('running track sub');
+            console.log(track.id);
+            console.log(subtrack.id);
             Playlist.sub(track, subtrack);
+            console.log(track.id);
+            console.log(subtrack.id);
           };
         }]);
 })();
