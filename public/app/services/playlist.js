@@ -110,6 +110,10 @@
         }
       };
 
+      Playlist.scoreChange = function(track, adj) {
+        track.score += adj;
+      };
+
       return Playlist;
     }]);
 })();
