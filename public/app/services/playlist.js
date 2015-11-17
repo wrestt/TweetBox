@@ -11,6 +11,8 @@
         this.name = data[0].name;
         this.artists = data[0].artists[0].name;
         this.album = data[0].album.name;
+        this.albumArt = data[0].album.images[0].url;
+        this.trackLength = data[0].duration_ms;
         if (main) {
           this.score = 0;
           this.time = Date.now();
@@ -42,6 +44,7 @@
 
       Playlist.add = function(song) {
         Spotify.searchAll(song).then(function(data) {
+          console.log(data.tracks.items[0]);
           if (data.tracks.items[0]) {
             var temp = _.find(
               Playlist.trackData, _.matchesProperty(
