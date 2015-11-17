@@ -24,5 +24,8 @@
             Twitter.fetch();
             $interval(Twitter.fetch, 63000);
           };
+          vm.changSong = function(track, subtrack) {
+            Playlist.sub(track, subtrack);
+          };
         }]);
 })();
