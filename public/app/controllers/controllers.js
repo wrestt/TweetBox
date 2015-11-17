@@ -11,9 +11,6 @@
           vm.trackID = Playlist.parsedTrack;
           vm.tracks = Playlist.trackData;
 
-          vm.tester = function() {
-            console.log('hello again');
-          };
           vm.newPlaylist = function() {
             Twitter.new();
             Playlist.new();
