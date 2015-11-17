@@ -29,6 +29,7 @@
             console.log(track.id);
             console.log(subtrack.id);
             Playlist.sub(track, subtrack);
+            $scope.show = false;
             console.log(track.id);
             console.log(subtrack.id);
           };
