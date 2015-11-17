@@ -9,30 +9,71 @@
 
 <p>Hello !</p>
 <div ng-if="trackID[0] !== 'hello'">
-  <iframe allowtransparency='true' frameborder='0' height='380' src="{{vm.trackID[0]}}" width='300'></iframe>
+<iframe allowtransparency='true' frameborder='0' height='380' src="{{vm.trackID[0]}}" width='300'></iframe>
 </div>
 
-<div class="card">
-  <div class="container">
 
-    <table class="responsive-table">
-      <thead>
-        <tr>
-          <th>Song Name</th>
-          <th>Artist</th>
-          <th>Album</th>
-          <th>Score</th>
-        </tr>
-      </thead>
+<div class="row">
+  <div class="col ">
+    <div class="card #212121 grey darken-4">
+      <div class="card-content white-text">
+        <span class="card-title">Card Title</span>
 
-      <tbody>
-        <tr ng-repeat="track in vm.tracks">
-          <td>{{track[0].name}}</td>
-          <td>{{track[0].artists[0].name}}</td>
-          <td>{{track[0].album.name}}</td>
-          <td>0</td>
-        </tr>
-      </tbody>
-    </table>
+        <table class="responsive-table">
+          <thead>
+            <tr >
+              <div class="row">
+                <div class="col s3">
+                  <p>Song Name</p>
+                </div>
+                <div class="col s3">
+                  <p>Artist</p>
+                </div>
+                <div class="col s3">
+                  <p>Album</p>
+                </div>
+                <div class="col s3">
+                  <p>Score</p>
+                </div>
+              </div>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr ng-repeat="track in vm.tracks"  >
+              <div ng-click="show = !show">
+                <td>
+                  {{track[0].name}}
+                </td>
+                <td>
+                  {{track[0].album.name}}
+                </td>
+                <td>
+                  {{track[0].artists[0].name}}
+                </td>
+                <td>
+                  Score
+                </td>
+              </div>
+              <div ng-show='show'>
+                <td>
+                  {{track[1].name}}
+                </td>
+                <td>
+                  {{track[1].album.name}}
+                </td>
+                <td>
+                  {{track[1].artists[0].name}}
+                </td>
+                <td>
+                  Score
+                </td>
+              </div>
+              <!-- <custom-popover popover-data="{{track}}"></custon-popover> -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>

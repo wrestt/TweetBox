@@ -1,7 +1,7 @@
 var twitterAPI = require('node-twitter-api');
 var twitter = new twitterAPI({
-  consumerKey: 'e0jOhuIEDqPGk4rkKbmBqqg3O',
-  consumerSecret: 'ifxEM2BFTkUoggios041EXYDjrOR21y67GeHPzgTLfxqcO5MZy',
+  consumerKey: 'DBwwb3MiVDneSkVCV9040CToC',
+  consumerSecret: '5EOqtqmZt49kAXfOy4ZrP0LrN6oysvuF6Fw91Cl8BeUxEn1cxt',
   callback: 'http://127.0.0.1:3000'
 });
 
