@@ -1,32 +1,34 @@
 (function() {
   angular
     .module('tweetBoxApp')
-    .controller('MainController', ['$scope', 'Spotify', 'Twitter', 'Playlist', '$timeout',
-      function($scope, Spotify, Twitter, Playlist, $timeout) {
-        $scope.tweets = Twitter.tweets;
-        $scope.songs = Playlist.tracksId;
-        $scope.trackID = Playlist.parsedTrack;
+    .controller('MainController',
+      ['$scope', 'Spotify', 'Twitter', 'Playlist', '$timeout',
+        function($scope, Spotify, Twitter, Playlist, $timeout) {
+          var vm = this;
+          vm.tweets = Twitter.tweets;
+          vm.songs = Playlist.tracksId;
+          vm.trackID = Playlist.parsedTrack;
+          vm.tracks = Playlist.trackData;
+          $timeout($scope.tester, 63000);
 
-        $timeout($scope.tester, 63000);
+          vm.tester = function() {
+            console.log('hello again');
+          };
 
-        $scope.tester = function() {
-          console.log('hello again');
-        }
+          vm.searchAll = function(searchText) {
+            Spotify.searchAll(searchText).then(function(data) {
+              console.log(data);
+            });
+          };
 
-        $scope.searchAll = function(searchText) {
-          Spotify.searchAll(searchText).then(function(data) {
-            console.log(data);
-          });
-        };
+          vm.twitterfetch = function() {
+            Twitter.fetch();
+          };
 
-        $scope.twitterfetch = function() {
-          Twitter.fetch();
-        };
+          vm.newPlaylist = function() {
+            Twitter.new();
+            Playlist.new();
+          };
 
-        $scope.newPlaylist = function() {
-          Twitter.new();
-          Playlist.new();
-        };
-
-      }]);
+        }]);
 })();

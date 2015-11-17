@@ -1,13 +1,33 @@
-<input type="text" ng-model="spotifySearch" placeholder="Search All">
-<button ng-click='searchAll(spotifySearch)' name="button">SEARCH ALL</button>
+<input ng-model="vm.spotifySearch" placeholder="Search All" type="text">
+<button name="button" ng-click='vm.searchAll(vm.spotifySearch)'>SEARCH ALL</button>
 
 <br>
-<button ng-click="newPlaylist()">New PLaylist</button>
-<button ng-click="twitterfetch()">Fetch Tweets</button>
+<button ng-click="vm.newPlaylist()">New PLaylist</button>
+<button ng-click="vm.twitterfetch()">Fetch Tweets</button>
 
 </br>
 
 <p>Hello !</p>
 <div ng-if="trackID[0] !== 'hello'">
-  <iframe src="{{trackID[0]}}" width='300' height='380' frameborder='0' allowtransparency='true'></iframe>
+<iframe allowtransparency='true' frameborder='0' height='380' src="{{vm.trackID[0]}}" width='300'></iframe>
 </div>
+
+<table>
+<thead>
+  <tr>
+    <th>Song Name</th>
+    <th>Artist</th>
+    <th>Album</th>
+    <th>Score</th>
+  </tr>
+</thead>
+
+<tbody>
+    <tr ng-repeat="track in vm.tracks">
+      <td>{{track[0].name}}</td>
+      <td>{{track[0].artists[0].name}}</td>
+      <td>{{track[0].album.name}}</td>
+      <td>0</td>
+    </tr>
+</tbody>
+</table>
