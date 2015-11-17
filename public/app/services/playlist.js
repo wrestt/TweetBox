@@ -40,18 +40,31 @@
           if (data.tracks.items[0]) {
             Playlist.tracksId.push(data.tracks.items[0].id);
             Playlist.trackData.push(new Track(data.tracks.items.slice(0, 5), true));
-            console.log(Playlist.trackData);
+            Playlist.sort();
             Playlist.parsedTrack[0] = $sce.trustAsResourceUrl("https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:" + Playlist.tracksId.join(','));
           }
         });
       };
 
-      Playlist.sub = function(oldSongID, newSongOld) {
+      Playlist.check = function(track) {
 
       };
 
       Playlist.sort = function() {
-
+        Playlist.trackData.sort(compare);
+        console.log(Playlist.trackData);
+        function compare(a, b) {
+          if (a.score > b.score) {
+            return -1;
+          } else if (a.score < b.score) {
+            return 1;
+          }
+          if (a.time > b.time) {
+            return -1
+          } else {
+            return 1;
+          }
+        }
       };
 
       return Playlist;
