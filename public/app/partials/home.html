@@ -12,14 +12,13 @@
 <iframe allowtransparency='true' frameborder='0' height='380' src="{{vm.trackID[0]}}" width='300'></iframe>
 </div>
 
-
 <div class="row">
   <div class="col ">
     <div class="card #212121 grey darken-4">
       <div class="card-content white-text">
         <span class="card-title">Card Title</span>
 
-        <table class="responsive-table">
+        <table class="bordered">
           <thead>
             <tr >
               <div class="row">
@@ -40,36 +39,38 @@
           </thead>
 
           <tbody>
-            <tr ng-repeat="track in vm.tracks"  >
-              <div ng-click="show = !show">
-                <td>
-                  {{track[0].name}}
-                </td>
-                <td>
-                  {{track[0].album.name}}
-                </td>
-                <td>
-                  {{track[0].artists[0].name}}
-                </td>
-                <td>
-                  Score
-                </td>
-              </div>
-              <div ng-show='show'>
-                <td>
-                  {{track[1].name}}
-                </td>
-                <td>
-                  {{track[1].album.name}}
-                </td>
-                <td>
-                  {{track[1].artists[0].name}}
-                </td>
-                <td>
-                  Score
-                </td>
-              </div>
-              <!-- <custom-popover popover-data="{{track}}"></custon-popover> -->
+            <tr ng-repeat="track in vm.tracks">
+              <td>
+                <div class="row" ng-click='show = !show'>
+                  <div class="col s3">
+                    <p ng-show='!show'>{{track.name}}</p>
+                  </div>
+                  <div class="col s3">
+                    <p ng-show='!show'>{{track.artists}}</p>
+                  </div>
+                  <div class="col s3">
+                    <p ng-show='!show'>{{track.album}}</p>
+                  </div>
+                  <div class="col s3">
+                    <p ng-show='!show'>{{track.score}}</p>
+                  </div>
+                </div>
+                <div class="row" ng-repeat='subtrack in track.subtracks' ng-show='show'>
+                  <div class="col s3">
+                    <input type="checkbox"/>
+                    <label for="test5">Select Track</label>
+                  </div>
+                  <div class="col s3">
+                    <p>{{subtrack.name}}</p>
+                  </div>
+                  <div class="col s3">
+                    <p>{{subtrack.artists}}</p>
+                  </div>
+                  <div class="col s3">
+                    <p>{{subtrack.album}}</p>
+                  </div>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
