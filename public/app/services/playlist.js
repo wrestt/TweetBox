@@ -4,8 +4,8 @@
     .factory('Playlist', ['$http', 'Spotify', '$sce',
       function($http, Spotify, $sce) {
       var Playlist = {};
-      Playlist.tracksId = [];
       Playlist.trackData = [];
+
       function Track(data, main) {
         this.id = data[0].id
         this.name = data[0].name;
@@ -21,6 +21,7 @@
           this.subtracks.push(new Track([data[4]], false));
         }
       };
+
       Playlist.parsedTrack = [$sce.trustAsResourceUrl('https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:5Z7ygHQo02SUrFmcgpwsKW,1x6ACsKV4UdWS2FMuPFUiT')];
 
       Playlist.new = function() {
@@ -38,10 +39,24 @@
       Playlist.add = function(song) {
         Spotify.searchAll(song).then(function(data) {
           if (data.tracks.items[0]) {
-            Playlist.tracksId.push(data.tracks.items[0].id);
-            Playlist.trackData.push(new Track(data.tracks.items.slice(0, 5), true));
+            var temp = _.find(Playlist.trackData, _.matchesProperty('id', data.tracks.items[0].id));
+            if (temp) {
+              console.log('WINNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNER');
+              console.log('WINNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNER');
+              console.log('WINNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNER');
+              temp.score ++;
+            } else {
+              Playlist.trackData.push(new Track(data.tracks.items.slice(0, 5), true));
+            }
             Playlist.sort();
-            Playlist.parsedTrack[0] = $sce.trustAsResourceUrl("https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:" + Playlist.tracksId.join(','));
+
+            var trackId = [];
+            Playlist.trackData.forEach(function(track) {
+              console.log(track);
+              trackId.push(track.id);
+            });
+
+            Playlist.parsedTrack[0] = $sce.trustAsResourceUrl("https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:" + trackId.join(','));
           }
         });
       };
@@ -60,7 +75,7 @@
             return 1;
           }
           if (a.time > b.time) {
-            return -1
+            return -1;
           } else {
             return 1;
           }
