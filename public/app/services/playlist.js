@@ -31,6 +31,15 @@
           }
         });
       };
+
+      Playlist.sub = function(oldSongID, newSongOld) {
+
+      };
+
+      Playlist.sort = function() {
+
+      };
+
       return Playlist;
     }]);
 })();
