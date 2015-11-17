@@ -17,25 +17,25 @@
   <div class="col ">
     <div class="card #212121 grey darken-4">
       <div class="card-content white-text">
-        <span class="card-title">Card Title</span>
+        <span class="card-title">Playlist</span>
 
         <table class="bordered">
           <thead>
-            <tr >
+            <tr>
               <div class="row">
                 <div class="col s1">
-                  <p>More</p>
+                  <p>&nbsp</p>
                 </div>
                 <div class="col s4">
                   <p>Song Name</p>
                 </div>
-                <div class="col s3">
+                <div class="col s2">
                   <p>Artist</p>
                 </div>
                 <div class="col s3">
                   <p>Album</p>
                 </div>
-                <div class="col s1">
+                <div class="col s2">
                   <p>Score</p>
                 </div>
               </div>
@@ -45,50 +45,63 @@
           <tbody>
             <tr ng-repeat="track in vm.tracks">
               <td>
-                <div class="row" ng-click='show = !show'>
-                  <div class="col s1">
-                    <p>more button</p>
+                <div class="row valign-wrapper">
+                  <div class="col s1 valign">
+                    <a class="btn-floating btn-medium waves-effect waves-light #00e676 green accent-3" ng-click='show = !show'>
+                      <i class='material-icons'>list</i>
+                    </a>
                   </div>
-                  <div class="col s4">
+                  <div class="col s4 valign">
                     <p>{{track.name}}</p>
                   </div>
-                  <div class="col s3">
+                  <div class="col s2 valign">
                     <p>{{track.artists}}</p>
                   </div>
-                  <div class="col s3">
+                  <div class="col s3 valign">
                     <p>{{track.album}}</p>
                   </div>
-                  <div class="col s1">
-                    <p>{{track.score}}</p>
+                  <div class="col s2 valign-wrapper">
+                    <div class="row valign">
+                      <div class="col s2 center-align">
+                        {{track.score}}
+                      </div>
+                      <div class="col s10">
+                        <a class="btn-floating btn waves-effect waves-light #212121 grey darken-4">
+                          <i class="fa fa-arrow-up"></i>
+                        </a>
+                        <a class="btn-floating btn waves-effect waves-light #212121 grey darken-4">
+                          <i class="fa fa-arrow-down"></i>
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div ng-show='show'>
-                  <div class="row">
-                    <div class="col s1">
-                      <p>Change Song</p>
-                    </div>
-                    <div class="col s4">
-                      <p>Song Name</p>
-                    </div>
-                    <div class="col s4">
-                      <p>Artits</p>
-                    </div>
-                    <div class="col s3">
-                      <p>Album</p>
-                    </div>
-                  </div>
-                  <div class="row" ng-repeat='subtrack in track.subtracks'>
-                    <div class="col s3">
-                      <button class='material-icons' ng-click='vm.changeSong(track, subtrack)'>playlist_add</button>
-                    </div>
-                    <div class="col s3">
-                      <p>{{subtrack.name}}</p>
-                    </div>
-                    <div class="col s3">
-                      <p>{{subtrack.artists}}</p>
-                    </div>
-                    <div class="col s3">
-                      <p>{{subtrack.album}}</p>
+                  <div class="card">
+                    <div class="card-content #424242 grey darken-3">
+                      <table>
+                        <thead>
+                          <tr>
+                            <td>&nbsp</td>
+                            <td>Song Name</td>
+                            <td>Artists</td>
+                            <td>Album</td>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="row" ng-repeat='subtrack in track.subtracks'>
+                            <td>
+                              <a class="btn-floating btn-small waves-effect waves-light #00e676 green accent-3" ng-click='vm.changeSong(track, subtrack)'>
+                                <i class='material-icons'>playlist_add</i>
+                              </a>
+                            </td>
+                            <td>{{subtrack.name}}</td>
+                            <td>{{subtrack.artists}}</td>
+                            <td>{{subtrack.album}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>

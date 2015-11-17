@@ -33,5 +33,9 @@
             console.log(track.id);
             console.log(subtrack.id);
           };
+
+          vm.play = function() {
+            $('#widgetContainer > div.player.music-paused > div.album-art-container.clickable > div > div').click();
+          }
         }]);
 })();
