@@ -27,8 +27,8 @@
       Playlist.parsedTrack = [false];
 
       Playlist.new = function() {
-        Playlist.parsedTrack = [];
-        Playlist.trackData = [];
+        Playlist.parsedTrack.length = 0;
+        Playlist.trackData.length = 0;
       };
 
       Playlist.intake = function(songs) {
@@ -60,12 +60,20 @@
         });
       };
 
+
       Playlist.addSearch = function(songdata) {
         var newTrack = new Track(songdata, false);
         newTrack.score = 0;
         newTrack.time = Date.now();
         Playlist.trackData.push(newTrack);
       };
+
+
+      Playlist.remove = function(track) {
+        _.difference(Playlist.trackData, track);
+        Playlist.sort();
+      };
+
 
       Playlist.buildUrl = function() {
         var trackId = [];
