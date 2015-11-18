@@ -1,3 +1,4 @@
+<data ng-if='vm.auth[0]' ng-init='vm.openauth()'></data>
 <input ng-model="vm.spotifySearch" placeholder="Search All" type="text">
 <button name="button" ng-click='vm.searchAll(vm.spotifySearch)'>SEARCH ALL</button>
 
@@ -100,3 +101,18 @@
   </div>
 </div>
 </div>
+
+ <!-- Modal Structure -->
+ <div id="modal1" class="modal">
+   <div class="modal-content">
+     <h4>Authorize Twitter and Spotify</h4>
+     <p>Sign Into Spotify</p>
+     <button class="waves-effect waves-light btn modal-trigger" ng-click='vm.spotifyAuth()'>Sign In to Spotify</button>
+
+     <p>Sign Into Twitter</p>
+     <button class="waves-effect waves-light btn modal-trigger" ng-click='vm.twitterAuth()'>Sign In to Twitter</button>
+   </div>
+   <div class="modal-footer">
+     <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+   </div>
+ </div>
