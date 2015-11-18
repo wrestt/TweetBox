@@ -17,19 +17,18 @@
 </nav>
 
 <div class="container">
-  <div class="fixed align-center">
-    <button class="waves-effect waves-light extralarge center-align #424242 grey darken-3" ng-if='vm.tracks.length < 2'><img src="/images/createPlaylistButton.png" alt="Create Playlist Button" /></button>
-    <div id="scrollHide"></br>
-      <div class="row">
-        <div class="col s6 push-s4" ng-if='vm.tracks.length > 1'>
+  <div ng-if='vm.tracks.length < 2' class="center-align top_margin">
+    <div ng-click="vm.twitterfetch()" class="waves-effect waves-light extralarge#424242 grey darken-3"><img src="/images/createPlaylistButton.png" alt="Create Playlist Button" /></div>
+  </div>
+  <div class="fixed">
+    <div id="scrollHide">
+        <div ng-if='vm.tracks.length > 1' class="center-align">
           <iframe allowtransparency='false' frameborder='0' height='680' src="{{vm.trackID[0]}}" width='600'></iframe>
         </div>
-      </div>
     </div>
   </div>
 
 <div class="scroll">
-
   <div ng-if='vm.tracks.length > 1' class="main_scroll">
     <div class="row">
       <div class="col s12 ">
