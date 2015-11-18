@@ -3,6 +3,7 @@ body {
   background: RGBA(25, 25, 25, 1);
 }
 .static{
+  background: static;
   height: 100vh;
   width: 100%;
 }

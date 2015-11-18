@@ -8,9 +8,11 @@
 <button ng-click="vm.newPlaylist()">New PLaylist</button>
 <button ng-click="vm.twitterfetch()">Fetch Tweets</button>
 
+<div id="scrollHide">
 </br>
 <div class="center-align" ng-if="trackID[0] !== 'hello'">
 <iframe allowtransparency='false' frameborder='0' height='680' src="{{vm.trackID[0]}}" width='600'></iframe>
+</div>
 </div>
 </div>
 
