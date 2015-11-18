@@ -21,10 +21,20 @@ body {
   color: #00e676;
 }
 #searchReultContainer{
-  max-height: 25%; 
+  max-height: 25%;
   overflow-y: scroll;
 }
-
+.cursor_pointer:hover{
+  cursor:pointer;
+}
+.extralarge{
+  border: none;
+  padding: 40px;
+}
+.main_scroll{
+  overflow-y: scroll;
+  height:700px;
+}
 /*****************ANIMATION*********************/
 .fade {
   transition: 1s linear all;
