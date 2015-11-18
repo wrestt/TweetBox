@@ -140,7 +140,9 @@
       };
 
       Playlist.remove = function(track) {
-        _.difference(Playlist.trackData, track);
+        console.log(track);
+        _.remove(Playlist.trackData, track);
+        console.log(Playlist.trackData);
         Playlist.sort();
       };
 
