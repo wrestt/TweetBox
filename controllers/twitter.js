@@ -43,6 +43,18 @@ apiRouter.route('/twitterfetch')
   });
 });
 
+apiRouter.route('/authcheck')
+.post(function(req, res) {
+  twitter.verifyCredentials(req.session.accessToken,
+    req.session.accessTokenSecret, function(error, data, response) {
+    if (error) {
+      res.json(false);
+    } else {
+      res.json(true);
+    }
+  });
+});
+
 app.get('/twitterauth', function(req, res) {
   twitter.getRequestToken(
   function(error, requestToken, requestTokenSecret, results) {

@@ -5,6 +5,7 @@
       var Twitter = {};
       Twitter.tweets = [];
       Twitter.lastId = false;
+      Twitter.authval = [true];
 
       Twitter.new = function() {
         $http({
@@ -49,6 +50,23 @@
           }
         }, function errorCallback(response) {
           console.log('Cant get these tweets man');
+        });
+      };
+
+      Twitter.authCheck = function() {
+        console.log('checking auth');
+        $http({
+          method: 'POST',
+          dataType: 'JSONP',
+          url: 'http://127.0.0.1:3000/api/authcheck',
+          xhrFields: {
+            withCredentials: true
+          }
+        }).then(function successCallback(response) {
+          console.log(response);
+          Twitter.authval[0] = response.data;
+        }, function errorCallback(response) {
+          Twitter.authval[0] = false;
         });
       };
       return Twitter;
