@@ -1,6 +1,8 @@
 (function() {
   angular
-    .module('tweetBoxApp', ['ngRoute', 'spotify', 'ngCookies', 'ngResource'])
+    .module('tweetBoxApp', [
+      'ngRoute', 'spotify', 'ngCookies', 'ngResource', 'ngAnimate'
+    ])
     .config(['$resourceProvider', '$routeProvider', '$locationProvider',
       function($resourceProvider, $routeProvider, $locationProvider) {
         // $resourceProvider.defaults.stripTrailingSlashes = false;

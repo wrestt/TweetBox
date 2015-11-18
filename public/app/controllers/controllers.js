@@ -44,7 +44,7 @@
           };
           vm.searchSpotify = function(searchString) {
             Spotify.searchAll(searchString).then(function(data) {
-              console.log(data);
+              console.log(data.tracks.items);
               vm.searchResults = data.tracks.items;
             });
           };

@@ -14,14 +14,18 @@
 </nav>
 
 <div class="container">
+  <div class="row">
+    <div class="col s12 ">
 
-  <div class="fixed">
-    <div id="scrollHide"></br>
-      <div ng-if='vm.tracks.length > 1' class="center-align">
-        <iframe  allowtransparency='false' frameborder='0' height='680' src="{{vm.trackID[0]}}" width='600'></iframe>
+      <div class="fixed align-center">
+        <div id="scrollHide"></br>
+        <div class="center-align" ng-if='vm.tracks.length > 1'>
+          <iframe allowtransparency='false' frameborder='0' height='680' src="{{vm.trackID[0]}}" width='600'></iframe>
+        </div>
       </div>
     </div>
   </div>
+</div>
 
 <div class="scroll">
 
@@ -31,14 +35,35 @@
         <div class="card #212121 grey darken-4">
           <div class="card-content white-text">
             <div class="input-field">
-              <input ng-model="vm.searchString" ng-change="vm.searchSpotify(vm.searchString)" id="track_search" type="text">
+              <input id="track_search" ng-change="vm.searchSpotify(vm.searchString)" ng-model="vm.searchString" type="text">
               <label for="track_search">Add Song</label>
             </div>
-            <ul>
-             <li ng-repeat="result in vm.searchResults">
-              <span class='search_results' ng-click="vm.addSong(result)">{{result.name}}||{{artists[0].name}}</span>
+            <div  class="row">
+              <div class="col s6 push-s3">
+                <div class="card #212121 grey darken-4" id="searchReultContainer">
+                  <div class="card-content" >
+                    <ul class="collection" ng-repeat="result in vm.searchResults">
+                      <li class="collection-item avatar fade #424242 grey darken-3">
+                        <img alt="{{result.name}}" class="circle" ng-src="{{result.album.images[2].url}}">
+                        <span class="title">{{result.name}}</span>
+                        <ul ng-repeat='artist in result.artists'>
+                          <li>{{artist.name}}</li>
+                        </ul>
+                        <a class="secondary-content" ng-href="{{result.artists[0].external_urls.spotify}}">
+                          <i class="material-icons">grade</i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <ul>
+             <li ng-repeat="result in vm.searchResults" class="fade">
+              <span class='search_results' ng-click="vm.addSong(result)">{{result.name}}&nbsp&nbspBy:&nbsp{{result.artists[0].name}}</span>
              </li>
-           </ul>
+           </ul> -->
             <br><br>
             <span class="card-title">Playlist</span>
             <table class="bordered">
@@ -68,10 +93,10 @@
               </thead>
 
               <tbody>
-                <tr ng-repeat="track in vm.tracks">
+                <tr class='fade' ng-repeat="track in vm.tracks">
                   <td>
                     <div class="row valign-wrapper">
-                      <div class="col s1 valign">
+                      <div class="col s1 valign" ng-if='track.subtracks'>
                         <a class="btn-floating btn-medium waves-effect waves-light #00e676 green accent-3" ng-click='show = !show'>
                           <i class='material-icons'>list</i>
                         </a>
@@ -102,7 +127,7 @@
                     </div>
                     <div ng-show='show'>
                       <div class="card">
-                        <div class="card-content #424242 grey darken-3">
+                        <div class="card-content #424242 grey darken-3 fade">
                           <table>
                             <thead>
                               <tr>
