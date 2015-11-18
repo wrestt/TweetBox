@@ -17,3 +17,6 @@ body {
   position: relative;
   top: 100vh;
 }
+.search_results:hover{
+  color: #00e676;
+}

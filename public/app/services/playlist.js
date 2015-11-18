@@ -55,16 +55,28 @@
               );
             }
             Playlist.sort();
-            Playlist.buildUrl();
           }
         });
       };
 
       Playlist.addSearch = function(songdata) {
-        var newTrack = new Track(songdata, false);
-        newTrack.score = 0;
-        newTrack.time = Date.now();
-        Playlist.trackData.push(newTrack);
+        console.log(songdata);
+        if (songdata[0]) {
+          var temp = _.find(
+            Playlist.trackData, _.matchesProperty(
+              'id', songdata[0].id
+            )
+          );
+          if (temp) {
+            temp.score ++;
+          } else {
+            var newTrack = new Track(songdata, false);
+            newTrack.score = 0;
+            newTrack.time = Date.now();
+            Playlist.trackData.push(newTrack);
+          }
+          Playlist.sort();
+        };
       };
 
       Playlist.buildUrl = function() {
@@ -106,17 +118,22 @@
             return 1;
           }
           if (a.time > b.time) {
-            return -1;
-          } else {
             return 1;
+          } else {
+            return -1;
           }
         }
+        Playlist.buildUrl();
       };
 
       Playlist.scoreChange = function(track, adj) {
         track.score += adj;
         Playlist.sort();
-        Playlist.buildUrl();
+      };
+
+      Playlist.remove = function(track) {
+        _.difference(Playlist.trackData, track);
+        Playlist.sort();
       };
 
       return Playlist;
