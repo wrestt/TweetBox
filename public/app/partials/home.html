@@ -5,13 +5,15 @@
 <button name="button" ng-click='vm.searchAll(vm.spotifySearch)'>SEARCH ALL</button>
 
 <br>
-<button ng-click="vm.newPlaylist()">New PLaylist</button>
-<button ng-click="vm.twitterfetch()">Fetch Tweets</button>
+<div class="center-align">
+  <button class="waves-effect waves-light btn modal-trigger #00e676 green accent-3" ng-click="vm.newPlaylist()">New PLaylist</button>
+  <button class="waves-effect waves-light btn modal-trigger #00e676 green accent-3" ng-click="vm.twitterfetch()">Fetch Tweets</button>
+</div>
 
 <div id="scrollHide">
 </br>
-<div class="center-align" ng-if="trackID[0] !== 'hello'">
-<iframe allowtransparency='false' frameborder='0' height='680' src="{{vm.trackID[0]}}" width='600'></iframe>
+<div ng-if='vm.tracks.length > 1' class="center-align">
+  <iframe allowtransparency='false' frameborder='0' height='680' src="{{vm.trackID[0]}}" width='600'></iframe>
 </div>
 </div>
 </div>

@@ -13,6 +13,7 @@
           vm.newPlaylist = function() {
             Twitter.new();
             Playlist.new();
+            Twitter.fetch();
           };
           vm.searchAll = function(searchText) {
             Spotify.searchAll(searchText).then(function(data) {

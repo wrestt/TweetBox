@@ -5,6 +5,7 @@
       function($http, Spotify, $sce) {
       var Playlist = {};
       Playlist.trackData = [];
+      Playlist.parsedTrack = [];
 
       function Track(data, main) {
         this.id = data[0].id;
@@ -23,15 +24,11 @@
         }
       };
 
-      Playlist.parsedTrack = [$sce.trustAsResourceUrl(
-        'https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:5Z7ygHQo02SUrFmcgpwsKW,1x6ACsKV4UdWS2FMuPFUiT'
-      )];
+      Playlist.parsedTrack = [false];
 
       Playlist.new = function() {
-        Playlist.tracks.length = 0;
-        Playlist.parsedTrack = [$sce.trustAsResourceUrl(
-          'https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:5Z7ygHQo02SUrFmcgpwsKW,1x6ACsKV4UdWS2FMuPFUiT'
-        )];
+        Playlist.parsedTrack = [];
+        Playlist.trackData = [];
       };
 
       Playlist.intake = function(songs) {
@@ -61,6 +58,13 @@
             Playlist.buildUrl();
           }
         });
+      };
+
+      Playlist.addSearch = function(songdata) {
+        var newTrack = new Track(songdata, false);
+        newTrack.score = 0;
+        newTrack.time = Date.now();
+        Playlist.trackData.push(newTrack);
       };
 
       Playlist.buildUrl = function() {
