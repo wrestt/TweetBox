@@ -1,140 +1,156 @@
-<div class="static">
+<nav id="navbar-fixed">
+  <div class="nav-wrapper #00e676 green accent-3">
+    <a class="brand-logo" href="/#/">TwitList</a>
+    <ul class="right hide-on-med-and-down" id="nav-mobile">
+      <li>
+        <a ng-click="vm.newPlaylist()">New PLaylist</a>
+      </li>
+      <li>
+        <a ng-click="vm.twitterfetch()">Fetch Tweets</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-<data ng-if='!vm.auth[0]' ng-init='vm.openauth()'></data>
-<input ng-model="vm.spotifySearch" placeholder="Search All" type="text">
-<button name="button" ng-click='vm.searchAll(vm.spotifySearch)'>SEARCH ALL</button>
+<div class="container">
 
-<br>
-<div class="center-align">
-  <button class="waves-effect waves-light btn modal-trigger #00e676 green accent-3" ng-click="vm.newPlaylist()">New PLaylist</button>
-  <button class="waves-effect waves-light btn modal-trigger #00e676 green accent-3" ng-click="vm.twitterfetch()">Fetch Tweets</button>
-</div>
+  <div class="fixed">
+    <div class="row">
+      <div class="col s12">
 
-<div id="scrollHide">
-</br>
-<div ng-if='vm.tracks.length > 1' class="center-align">
-  <iframe allowtransparency='false' frameborder='0' height='680' src="{{vm.trackID[0]}}" width='600'></iframe>
-</div>
-</div>
-</div>
+        <data ng-if='!vm.auth[0]' ng-init='vm.openauth()'></data>
+        <input ng-model="vm.spotifySearch" placeholder="Search All" type="text">
+        <button name="button" ng-click='vm.searchAll(vm.spotifySearch)'>SEARCH ALL</button>
+
+        <br>
+
+        <div class="center-align" id="scrollHide"></br>
+          <div ng-if='vm.tracks.length > 1'>
+            <iframe allowtransparency='false' frameborder='0' height='680' src="{{vm.trackID[0]}}" width='600'></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <div class="scroll">
 
-<div ng-if='vm.tracks.length > 1'>
-<div class="row">
-  <div class="col s12 ">
-    <div class="card #212121 grey darken-4">
-      <div class="card-content white-text">
-        <span class="card-title">Playlist</span>
+  <div ng-if='vm.tracks.length > 1'>
+    <div class="row">
+      <div class="col s12 ">
+        <div class="card #212121 grey darken-4">
+          <div class="card-content white-text">
+            <span class="card-title">Playlist</span>
 
-        <table class="bordered">
-          <thead>
-            <tr>
-              <div class="row">
-                <div class="col s1">
-                  <p>&nbsp</p>
-                </div>
-                <div class="col s4">
-                  <p>Song Name</p>
-                </div>
-                <div class="col s2">
-                  <p>Artist</p>
-                </div>
-                <div class="col s3">
-                  <p>Album</p>
-                </div>
-                <div class="col s2 right-align">
-                  <p>Score</p>
-                </div>
-              </div>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr ng-repeat="track in vm.tracks">
-              <td>
-                <div class="row valign-wrapper">
-                  <div class="col s1 valign">
-                    <a class="btn-floating btn-medium waves-effect waves-light #00e676 green accent-3" ng-click='show = !show'>
-                      <i class='material-icons'>list</i>
-                    </a>
-                  </div>
-                  <div class="col s4 valign">
-                    <p>{{track.name}}</p>
-                  </div>
-                  <div class="col s2 valign">
-                    <p>{{track.artists}}</p>
-                  </div>
-                  <div class="col s3 valign">
-                    <p>{{track.album}}</p>
-                  </div>
-                  <div class="col s2 valign right-align">
-                    {{track.score}}
-                    <a class="btn-floating btn waves-effect waves-light #212121 grey darken-4" ng-click='vm.vote(track, 1)'>
-                      <i class="fa fa-arrow-up"></i>
-                    </a>
-                    <a class="btn-floating btn waves-effect waves-light #212121 grey darken-4" ng-click='vm.vote(track, -1)'>
-                      <i class="fa fa-arrow-down"></i>
-                    </a>
-                  </div>
-                </div>
-                <div ng-show='show'>
-                  <div class="card">
-                    <div class="card-content #424242 grey darken-3">
-                      <table>
-                        <thead>
-                          <tr>
-                            <td>&nbsp</td>
-                            <td>Song Name</td>
-                            <td>Artists</td>
-                            <td>Album</td>
-                          </tr>
-                        </thead>
-
-                        <tbody>
-                          <tr class="row" ng-repeat='subtrack in track.subtracks'>
-                            <td>
-                              <a class="btn-floating btn-small waves-effect waves-light #00e676 green accent-3" ng-click='vm.changeSong(track, subtrack)'>
-                                <i class='material-icons'>playlist_add</i>
-                              </a>
-                            </td>
-                            <td>{{subtrack.name}}</td>
-                            <td>{{subtrack.artists}}</td>
-                            <td>{{subtrack.album}}</td>
-                          </tr>
-                        </tbody>
-                      </table>
+            <table class="bordered">
+              <thead>
+                <tr>
+                  <div class="row">
+                    <div class="col s1">
+                      <p>&nbsp</p>
+                    </div>
+                    <div class="col s4">
+                      <p>Song Name</p>
+                    </div>
+                    <div class="col s2">
+                      <p>Artist</p>
+                    </div>
+                    <div class="col s3">
+                      <p>Album</p>
+                    </div>
+                    <div class="col s2 right-align">
+                      <p>Score</p>
                     </div>
                   </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+                </tr>
+              </thead>
 
+              <tbody>
+                <tr ng-repeat="track in vm.tracks">
+                  <td>
+                    <div class="row valign-wrapper">
+                      <div class="col s1 valign">
+                        <a class="btn-floating btn-medium waves-effect waves-light #00e676 green accent-3" ng-click='show = !show'>
+                          <i class='material-icons'>list</i>
+                        </a>
+                      </div>
+                      <div class="col s4 valign">
+                        <p>{{track.name}}</p>
+                      </div>
+                      <div class="col s2 valign">
+                        <p>{{track.artists}}</p>
+                      </div>
+                      <div class="col s3 valign">
+                        <p>{{track.album}}</p>
+                      </div>
+                      <div class="col s2 valign right-align">
+                        {{track.score}}
+                        <a class="btn-floating btn waves-effect waves-light #212121 grey darken-4" ng-click='vm.vote(track, 1)'>
+                          <i class="fa fa-arrow-up"></i>
+                        </a>
+                        <a class="btn-floating btn waves-effect waves-light #212121 grey darken-4" ng-click='vm.vote(track, -1)'>
+                          <i class="fa fa-arrow-down"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <div ng-show='show'>
+                      <div class="card">
+                        <div class="card-content #424242 grey darken-3">
+                          <table>
+                            <thead>
+                              <tr>
+                                <td>&nbsp</td>
+                                <td>Song Name</td>
+                                <td>Artists</td>
+                                <td>Album</td>
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                              <tr class="row" ng-repeat='subtrack in track.subtracks'>
+                                <td>
+                                  <a class="btn-floating btn-small waves-effect waves-light #00e676 green accent-3" ng-click='vm.changeSong(track, subtrack)'>
+                                    <i class='material-icons'>playlist_add</i>
+                                  </a>
+                                </td>
+                                <td>{{subtrack.name}}</td>
+                                <td>{{subtrack.artists}}</td>
+                                <td>{{subtrack.album}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
 </div>
 </div>
+
+<!-- Modal Structure -->
+<div class="modal" id="modal1">
+<div class="modal-content center-align #9e9e9e grey">
+
+  <h4>Authorize Twitter and Spotify</h4>
+  <p>Sign Into Spotify</p>
+  <button class="waves-effect waves-light btn modal-trigger #00e676 green accent-3" ng-click='vm.spotifyAuth()'>
+    Spotify
+  </button>
+
+  <p>Sign Into Twitter</p>
+  <button class="waves-effect waves-light btn modal-trigger #00e676 green accent-3" ng-click='vm.twitterAuth()'>
+    Twitter
+  </button>
 </div>
-
- <!-- Modal Structure -->
- <div id="modal1" class="modal">
-   <div class="modal-content center-align #9e9e9e grey">
-
-     <h4>Authorize Twitter and Spotify</h4>
-     <p>Sign Into Spotify</p>
-     <button class="waves-effect waves-light btn modal-trigger #00e676 green accent-3" ng-click='vm.spotifyAuth()'>
-       Spotify
-     </button>
-
-     <p>Sign Into Twitter</p>
-     <button class="waves-effect waves-light btn modal-trigger #00e676 green accent-3" ng-click='vm.twitterAuth()'>
-       Twitter
-     </button>
-   </div>
-   <div class="modal-footer">
-     <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-   </div>
- </div>
+<div class="modal-footer">
+  <a class=" modal-action modal-close waves-effect waves-green btn-flat" href="#!">Close</a>
+</div>
+</div>

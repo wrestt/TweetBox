@@ -2,11 +2,18 @@
 body {
   background: RGBA(25, 25, 25, 1);
 }
-.static{
-  background: static;
-  height: 100vh;
+#navbar-fixed {
+  top: 0;
+  z-index: 100;
   width: 100%;
+  position: fixed;
+}
+.fixed{
+  top: 10%;
+  height: 100%;
+  position: fixed;
 }
 .scroll{
+  position: relative;
   top: 100vh;
 }
