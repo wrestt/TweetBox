@@ -10,7 +10,11 @@
       function Track(data, main) {
         this.id = data[0].id;
         this.name = data[0].name;
-        this.artists = data[0].artists[0].name;
+        var tempArtists = [];
+        data[0].artists.forEach(function(artist) {
+          tempArtits.push(artist.name);
+        });
+        this.artists = tempArtits.join(', ');
         this.album = data[0].album.name;
         this.albumArt = data[0].album.images[1].url;
         if (main) {
