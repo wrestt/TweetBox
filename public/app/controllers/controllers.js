@@ -38,5 +38,8 @@
           vm.twitterAuth = function() {
             UserData.twitterLogin();
           };
+          vm.vote = function(track, value) {
+            Playlist.scoreChange(track, value);
+          };
         }]);
 })();

@@ -111,6 +111,8 @@
 
       Playlist.scoreChange = function(track, adj) {
         track.score += adj;
+        Playlist.sort();
+        Playlist.buildUrl();
       };
 
       return Playlist;

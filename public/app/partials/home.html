@@ -1,4 +1,6 @@
-<data ng-if='vm.auth[0]' ng-init='vm.openauth()'></data>
+<div class="static">
+
+<data ng-if='!vm.auth[0]' ng-init='vm.openauth()'></data>
 <input ng-model="vm.spotifySearch" placeholder="Search All" type="text">
 <button name="button" ng-click='vm.searchAll(vm.spotifySearch)'>SEARCH ALL</button>
 
@@ -8,12 +10,15 @@
 
 </br>
 <div class="center-align" ng-if="trackID[0] !== 'hello'">
-<iframe allowtransparency='true' frameborder='0' height='680' src="{{vm.trackID[0]}}" width='600'></iframe>
+<iframe allowtransparency='false' frameborder='0' height='680' src="{{vm.trackID[0]}}" width='600'></iframe>
 </div>
+</div>
+
+<div class="scroll">
 
 <div ng-if='vm.tracks.length > 1'>
 <div class="row">
-  <div class="col ">
+  <div class="col s12 ">
     <div class="card #212121 grey darken-4">
       <div class="card-content white-text">
         <span class="card-title">Playlist</span>
@@ -34,7 +39,7 @@
                 <div class="col s3">
                   <p>Album</p>
                 </div>
-                <div class="col s2">
+                <div class="col s2 right-align">
                   <p>Score</p>
                 </div>
               </div>
@@ -59,20 +64,14 @@
                   <div class="col s3 valign">
                     <p>{{track.album}}</p>
                   </div>
-                  <div class="col s2 valign-wrapper">
-                    <div class="row valign">
-                      <div class="col s2 center-align">
-                        {{track.score}}
-                      </div>
-                      <div class="col s10">
-                        <a class="btn-floating btn waves-effect waves-light #212121 grey darken-4">
-                          <i class="fa fa-arrow-up"></i>
-                        </a>
-                        <a class="btn-floating btn waves-effect waves-light #212121 grey darken-4">
-                          <i class="fa fa-arrow-down"></i>
-                        </a>
-                      </div>
-                    </div>
+                  <div class="col s2 valign right-align">
+                    {{track.score}}
+                    <a class="btn-floating btn waves-effect waves-light #212121 grey darken-4" ng-click='vm.vote(track, 1)'>
+                      <i class="fa fa-arrow-up"></i>
+                    </a>
+                    <a class="btn-floating btn waves-effect waves-light #212121 grey darken-4" ng-click='vm.vote(track, -1)'>
+                      <i class="fa fa-arrow-down"></i>
+                    </a>
                   </div>
                 </div>
                 <div ng-show='show'>
@@ -114,16 +113,22 @@
   </div>
 </div>
 </div>
+</div>
 
  <!-- Modal Structure -->
  <div id="modal1" class="modal">
-   <div class="modal-content">
+   <div class="modal-content center-align #9e9e9e grey">
+
      <h4>Authorize Twitter and Spotify</h4>
      <p>Sign Into Spotify</p>
-     <button class="waves-effect waves-light btn modal-trigger" ng-click='vm.spotifyAuth()'>Sign In to Spotify</button>
+     <button class="waves-effect waves-light btn modal-trigger #00e676 green accent-3" ng-click='vm.spotifyAuth()'>
+       Spotify
+     </button>
 
      <p>Sign Into Twitter</p>
-     <button class="waves-effect waves-light btn modal-trigger" ng-click='vm.twitterAuth()'>Sign In to Twitter</button>
+     <button class="waves-effect waves-light btn modal-trigger #00e676 green accent-3" ng-click='vm.twitterAuth()'>
+       Twitter
+     </button>
    </div>
    <div class="modal-footer">
      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>

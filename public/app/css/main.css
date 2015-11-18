@@ -1,1 +1,11 @@
 /* add custom styles */
+body {
+  background: RGBA(25, 25, 25, 1);
+}
+.static{
+  height: 100vh;
+  width: 100%;
+}
+.scroll{
+  top: 100vh;
+}

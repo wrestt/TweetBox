@@ -10,21 +10,6 @@
             controller: 'MainController',
             controllerAs: 'vm'
           })
-          .when('/signin', {
-            templateUrl: '/app/partials/signin.html',
-            controller: 'UsersController',
-            controllerAs: 'vm'
-          })
-          .when('/signup', {
-            templateUrl: '/app/partials/signup.html',
-            controller: 'UsersController',
-            controllerAs: 'vm'
-          })
-          .when('/account', {
-            templateUrl: '/app/partials/account.html',
-            controller: 'UsersController',
-            controllerAs: 'vm'
-          })
           .when('/close', {
             templateUrl: '/app/partials/callback.html',
             controller: 'CallBackController',
