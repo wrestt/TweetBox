@@ -7,7 +7,7 @@
           var vm = this;
           vm.trackID = Playlist.parsedTrack;
           vm.tracks = Playlist.trackData;
-          vm.auth = [Twitter.authval];
+          vm.auth = Twitter.authval;
           Twitter.authCheck();
 
           vm.newPlaylist = function() {
