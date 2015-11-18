@@ -1,6 +1,7 @@
 var twitterAPI = require('node-twitter-api');
-var myClientId = '634a5dc250544991b91a8be0874b61be';
-var mySecret = 'f2eed101cdb144349ff7f6589b4096ef';
+var config = require('../env.json')[process.env.NODE_ENV || 'development'];
+var myClientId = config.SPOTIFY_CLIENT_ID;
+var mySecret = config.SPOTIFY_CLIENT_SECRET;
 var redirectUri = 'http://127.0.0.1:3000/spotifycallback';
 var scopes = 'user-read-private user-read-email playlist-modify-public playlist-modify-private user-follow-read user-library-read user-library-modify user-read-private user-read-birthdate';
 

@@ -1,7 +1,8 @@
 var twitterAPI = require('node-twitter-api');
+var config = require('../env.json')[process.env.NODE_ENV || 'development'];
 var twitter = new twitterAPI({
-  consumerKey: 'DBwwb3MiVDneSkVCV9040CToC',
-  consumerSecret: '5EOqtqmZt49kAXfOy4ZrP0LrN6oysvuF6Fw91Cl8BeUxEn1cxt',
+  consumerKey: config.TWITTER_CONSUMER_KEY,
+  consumerSecret: config.TWITTER_CONSUMER_SECRET,
   callback: 'http://127.0.0.1:3000'
 });
 

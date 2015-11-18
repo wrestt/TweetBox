@@ -42,5 +42,19 @@
           vm.vote = function(track, value) {
             Playlist.scoreChange(track, value);
           };
+          vm.searchSpotify = function(searchString) {
+            Spotify.searchAll(searchString).then(function(data) {
+              console.log(data);
+              vm.searchResults = data.tracks.items;
+            });
+          };
+          vm.addSong = function(trackObj) {
+            vm.searchString = '';
+            vm.searchResults = {};
+            Playlist.addSearch([trackObj]);
+          };
+          vm.removeSong = function(trackObj) {
+            Playlist.remove(trackObj);
+          };
         }]);
 })();
