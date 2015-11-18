@@ -56,5 +56,9 @@
           vm.removeSong = function(trackObj) {
             Playlist.remove(trackObj);
           };
+          vm.clearSearch = function() {
+            vm.searchString = '';
+            vm.searchResults = {};
+          };
         }]);
 })();
