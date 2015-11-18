@@ -65,6 +65,7 @@
         }).then(function successCallback(response) {
           console.log(response);
           Twitter.authval[0] = response.data;
+
         }, function errorCallback(response) {
           Twitter.authval[0] = false;
         });
