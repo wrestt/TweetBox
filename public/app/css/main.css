@@ -33,7 +33,11 @@ body {
 }
 .main_scroll{
   overflow-y: scroll;
-  height:700px;
+  height:100%;
+}
+.content_scroll{
+  overflow-y: scroll;
+  height:300px;
 }
 /*****************ANIMATION*********************/
 .fade {
