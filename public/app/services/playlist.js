@@ -12,9 +12,9 @@
         this.name = data[0].name;
         var tempArtists = [];
         data[0].artists.forEach(function(artist) {
-          tempArtits.push(artist.name);
+          tempArtists.push(artist.name);
         });
-        this.artists = tempArtits.join(', ');
+        this.artists = tempArtists.join(', ');
         this.album = data[0].album.name;
         this.albumArt = data[0].album.images[1].url;
         if (main) {
