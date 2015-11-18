@@ -1,31 +1,35 @@
-<data ng-if='!vm.auth[0]' ng-init='vm.openauth()'></data>
+<!-- <data ng-if='!vm.auth[0]' ng-init='vm.openauth()'></data> -->
+
+
+
 <nav id="navbar-fixed">
   <div class="nav-wrapper #00e676 green accent-3">
-    <a class="brand-logo" href="/#/">TwitList</a>
+    <a class="brand-logo" href="/#/"><img src="/images/logosm.png" alt="TwitList Logo" /></a>
     <ul class="right hide-on-med-and-down" id="nav-mobile">
       <li>
-        <a ng-click="vm.newPlaylist()">New PLaylist</a>
+        <a class="cursor_pointer" ng-click="vm.newPlaylist()">New PLaylist</a>
       </li>
       <li>
-        <a ng-click="vm.twitterfetch()">Fetch Tweets</a>
+        <a class="cursor_pointer" ng-click="vm.twitterfetch()">Fetch Tweets</a>
       </li>
     </ul>
   </div>
 </nav>
 
 <div class="container">
-  <div class="fixed align-center">
-    <button class="waves-effect waves-light extralarge center-align #424242 grey darken-3" ng-if='vm.tracks.length < 2'><img src="/images/createPlaylistButton.png" alt="Create Playlist Button" /></button>
-    <div id="scrollHide"></br>
-      <div class="row">
-        <div class="col s6 push-s4" ng-if='vm.tracks.length > 1'>
+  <div ng-if='vm.tracks.length < 2' class="center-align top_margin">
+    <div ng-click="vm.twitterfetch()" class="waves-effect waves-light extralarge#424242 grey darken-3"><img src="/images/createPlaylistButton.png" alt="Create Playlist Button" /></div>
+  </div>
+  <div class="fixed">
+    <div id="scrollHide">
+        <div ng-if='vm.tracks.length > 1' class="center-align">
           <iframe allowtransparency='false' frameborder='0' height='680' src="{{vm.trackID[0]}}" width='600'></iframe>
         </div>
-      </div>
     </div>
   </div>
 
-  <div ng-if='vm.tracks.length > 1'>
+<div class="scroll">
+  <div ng-if='vm.tracks.length > 1' class="main_scroll">
     <div class="row">
       <div class="col s12 ">
         <div class="card #212121 grey darken-4">
@@ -34,29 +38,26 @@
               <input id="track_search" ng-change="vm.searchSpotify(vm.searchString)" ng-model="vm.searchString" type="text">
               <label for="track_search">Add Song</label>
             </div>
-            <div  class="row" ng-if='vm.searchString'>
-              <div class="col s6 push-s3">
+            <div  class="row valign-wrapper" ng-if='vm.searchString'>
+              <div class="col s6 push-s3 valign">
                 <div class="card #212121 grey darken-4" id="searchReultContainer">
                   <div class="card-content" >
                     <ul class="collection" ng-repeat="result in vm.searchResults">
                       <li class="collection-item avatar fade #424242 grey darken-3">
                         <div class="row">
-                          <div class="col s1">
-                            <i class='material-icons' ng-click="vm.addSong(result)">playlist_add</i>
+                          <div class="col s2">
+                            <i class='material-icons cursor_pointer' ng-click="vm.addSong(result)">playlist_add</i>
                           </div>
                           <div class="col s3">
                             <img alt="{{result.name}}"  ng-src="{{result.album.images[2].url}}">
                           </div>
-                          <div class="col s8">
+                          <div class="col s7">
                             <span class="title">{{result.name}}</span>
                             <ul ng-repeat='artist in result.artists'>
                               <li>{{artist.name}}</li>
                             </ul>
                           </div>
                         </div>
-                        <a class="secondary-content" ng-href="{{result.artists[0].external_urls.spotify}}">
-                          <i class="material-icons">grade</i>
-                        </a>
                       </li>
                     </ul>
                   </div>
@@ -95,10 +96,11 @@
                 <tr class='fade' ng-repeat="track in vm.tracks">
                   <td>
                     <div class="row valign-wrapper">
-                      <div class="col s1 valign" ng-if='track.subtracks'>
-                        <a class="btn-floating btn-medium waves-effect waves-light #00e676 green accent-3" ng-click='show = !show'>
-                          <i class='material-icons'>list</i>
+                      <div class="col s1 valign">
+                        <a ng-show='track.subtracks' class="btn-floating btn-small waves-effect waves-light #00e676 green accent-3" ng-click='show = !show'>
+                          <i class='material-icons small'>list</i>
                         </a>
+                          <p>&nbsp</p>
                       </div>
                       <div class="col s4 valign">
                         <p>{{track.name}}</p>
