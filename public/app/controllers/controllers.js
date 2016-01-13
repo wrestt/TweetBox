@@ -97,11 +97,13 @@
           for (var track of vm.tracks) {
             trackIDs.push(track.id);
           }
+          console.log(trackIDs);
           Spotify
           .createPlaylist(trackIDs, {name: 'TweetBOX ' + moment().format('ll')})
           .then(function(data) {
             console.log('Created playlist' + vm.tracks);
           });
+          console.log(Spotify);
         };
       }
     ]);
