@@ -11,18 +11,21 @@
         Twitter.authCheck();
         vm.previewPlay = {};
 
-        vm.ngPopupConfig = {
-          modelName: "myNgPopup",
-          width: 200,
-          height: 200,
-          templateUrl: "<h1>HELLO</h1>",
-          resizable: false,
-          draggable: false,
-          hasTitleBar: false,
-          position: {
-            top: 500,
-            left: 500
-          }
+        vm.ngPopupOption = {
+            modelName: "myNgPopup",
+            width: 400,
+            height: 300,
+            hasTitleBar:true,
+            template: '<img src="http://www.omgubuntu.co.uk/wp-content/uploads/2014/03/Forever-Shady-S.jpg" style="width:100%;height:100%;">',
+            title: "Awesome Dialog",
+            resizable:true,
+            draggable: true,
+            position: { top : 250, left : 300},
+            onOpen : function(){},
+            onClose  : function(){},
+            onDragStart : function(){},
+            onDragEnd : function(){},
+            onResize : function(){}
         }
 
         vm.newPlaylist = function() {
@@ -56,7 +59,11 @@
         };
         vm.searchSpotify = function(searchString) {
           Spotify.searchAll(searchString).then(function(data) {
+            for (var track of data.tracks) {
+              track.playState = 'play_circle_outline';
+            };
             vm.searchResults = data.tracks.items;
+            console.log(data.tracks.items);
           });
         };
         vm.addSong = function(trackObj) {
