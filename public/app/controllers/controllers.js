@@ -96,7 +96,7 @@
               }
               console.log(trackIDs);
 
-              var trackIdString = trackIDs.join('');
+              var trackIdString = trackIDs.join(',');
               console.log(trackIdString);
 
               Spotify.getCurrentUser()
@@ -117,7 +117,7 @@
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json;',
-                      'Authorization': 'Bearer ' + localStorage.getItem('spotify-token'),
+                      'Authorization': 'Bearer ' + localStorage.getItem('spotify-token')
                     },
                   });
                 });
