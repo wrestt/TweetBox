@@ -23,6 +23,7 @@
 
       this.setAuthToken = function(authToken) {
         settings.authToken = authToken;
+        console.log(settings);
         return settings.authToken;
       };
 
