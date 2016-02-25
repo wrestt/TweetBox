@@ -51,7 +51,7 @@
       };
 
       Playlist.add = function (song) {
-        Spotify.searchAll(song).then(function (data) {
+        Spotify.search(song, 'album,artist,track').then(function (data) {
           console.log(data.tracks.items[0]);
           if (data.tracks.items[0]) {
             var temp = _.find(

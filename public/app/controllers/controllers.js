@@ -22,8 +22,7 @@
         };
 
         vm.searchAll = function (searchText) {
-          Spotify.searchAll(searchText).then(function (data) {
-            console.log(data);
+          Spotify.search(searchText, 'album,artist,track').then(function (data) {
           });
         };
 
@@ -63,7 +62,7 @@
         };
 
         vm.searchSpotify = function (searchString) {
-          Spotify.searchAll(searchString).then(function (data) {
+          Spotify.search(searchString, 'album,artist,track').then(function (data) {
             console.log(data.tracks.items);
             for (var track of data.tracks.items) {
               track.playState = 'play_circle_outline';
